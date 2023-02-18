@@ -1,18 +1,13 @@
 package project;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
 public class Table_ID {
-	private static String iD;
+	private String iD;
 	private String table_Status;
-	
 	
 	public Table_ID(String iD, String table_Status) {
 		super();
-		this.iD = iD;
-		this.table_Status = table_Status;
+		setID(iD);
+		setTable_Status(table_Status);
 	}
 
 	public String getID() {
@@ -20,6 +15,9 @@ public class Table_ID {
 	}
 
 	public void setID(String iD) {
+		if(iD.isEmpty()) {
+			System.out.println("Invalid ID");
+		}else;
 		this.iD = iD;
 	}
 
@@ -31,14 +29,11 @@ public class Table_ID {
 		this.table_Status = table_Status;
 	}
 
-	public static void find_Table (String id) throws IOException{
-		String table = "table";
-		File table1 = new File(table);
-		if(table1.exists()) {
-			String[] booking = table1.list();
-			String Stat = booking.toString();
-			Scanner reader = new Scanner(new File(table+"/"+booking));
-		}
+	@Override
+	public String toString() {
+		return "Table_ID [iD=" + iD + ", table_Status=" + table_Status + "]";
 	}
+
+	
 	
 }
