@@ -13,8 +13,6 @@ public class Main {
 		}
 
 		System.out.println("TON");
-
-
 		System.out.println("Eufa");
 
 	}
