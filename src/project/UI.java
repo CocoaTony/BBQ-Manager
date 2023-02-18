@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.Color;
+import javax.swing.SwingConstants;
 
 public class UI {
 
@@ -53,8 +54,9 @@ public class UI {
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("หมาน้อยหมูกะทะ");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Angsana New", Font.PLAIN, 93));
-		lblNewLabel.setBounds(122, 11, 462, 90);
+		lblNewLabel.setBounds(122, 11, 462, 109);
 		panel.add(lblNewLabel);
 	}
 }
