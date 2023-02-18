@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import java.awt.Color;
 
 public class UI {
 
@@ -41,7 +44,17 @@ public class UI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 720, 1600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(227, 158, 147));
+		panel.setForeground(new Color(0, 0, 0));
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("หมาน้อยหมูกะทะ");
+		lblNewLabel.setFont(new Font("Angsana New", Font.PLAIN, 93));
+		lblNewLabel.setBounds(122, 11, 462, 90);
+		panel.add(lblNewLabel);
 	}
-
 }
