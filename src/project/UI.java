@@ -39,13 +39,9 @@ public class UI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 720, 1600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		JLabel lblNewLabel = new JLabel("Test UI");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		frame.getContentPane().add(lblNewLabel);
 	}
 
 }
