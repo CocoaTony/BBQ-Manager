@@ -32,7 +32,6 @@ public class UI {
 	 */
 	public UI() {
 		initialize();
-		
 	}
 
 	/**
