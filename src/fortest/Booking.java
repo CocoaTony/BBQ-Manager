@@ -68,7 +68,6 @@ public class Booking {
 			new File("testdata").mkdir();
 			wf();
 		}
-		
 	}
 	public void wf() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
