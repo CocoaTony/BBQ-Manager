@@ -2,14 +2,11 @@ package fortest;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
 
 public class Func {
 	public static void Booking() throws IOException, ParseException {
 //		SimpleDateFormat date1 = new SimpleDateFormat("dd-MM-yyy HH:mm:ss");
-		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Enter Your name: ");
