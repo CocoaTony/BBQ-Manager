@@ -11,12 +11,14 @@ public class Booking {
 	private String time;
 	private String table;
 	private String phone;
+	static int numID;
 	
 	public Booking(String name, String phone, String table, String time) throws ParseException {
 		setName(name);;
 		setPhone(phone);
 		setTable(table);
 		setTime(time);
+		setNumID();
 	}
 	public String getName() {
 		return name;
@@ -49,11 +51,17 @@ public class Booking {
 	public void setTable(String table) {
 		this.table = table;
 	}
+	public static int getNumID() {
+		return numID;
+	}
+	public static void setNumID() {
+		Booking.numID++;
+	}
 	
 	public void writeFile() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("testdata/booking.txt", true);
-		write.append(getName()+"\t"+getPhone()+"\t"+getTable()+"\t"+getTime()+"\t"+date.format(new Date())+"\n");
+		write.append(getNumID()+"\t"+getName()+"\t"+getPhone()+"\t"+getTable()+"\t"+getTime()+"\t"+date.format(new Date())+"\n");
 		write.close();
 	}
 	
