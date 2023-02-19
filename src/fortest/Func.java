@@ -18,7 +18,6 @@ public class Func {
 		System.out.print("Enter Time [Ex. 13.00 Enter 13:00]: ");
 		String time = scan.nextLine();
 		scan.close();
-		
 //		String time = date.format(new Date());
 		
 		Booking bk = new Booking(name,phone,table,time);
@@ -26,9 +25,9 @@ public class Func {
 //		bk.setPhone(phone);
 //		bk.setTable(table);
 //		bk.setTime(time);
-		
-		System.out.println("Adding Data in testdata/booking Sussesed");
 		bk.writeFile();
+		System.out.println("Adding Data in testdata/booking Sussesed");
+		
 	}
 	
 	public static void Display() {
