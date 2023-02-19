@@ -27,11 +27,7 @@ public class Func {
 //		bk.setTable(table);
 //		bk.setTime(time);
 		
-		System.out.println(bk.getName());
-		System.out.println(bk.getPhone());
-		System.out.println(bk.getTable());
-		System.out.println(bk.getTime());
-		
+		System.out.println("Adding Data in testdata/booking Sussesed");
 		bk.writeFile();
 	}
 	

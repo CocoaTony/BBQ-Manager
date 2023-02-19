@@ -1,5 +1,6 @@
 package fortest;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
@@ -59,6 +60,17 @@ public class Booking {
 	}
 	
 	public void writeFile() throws IOException {
+		
+		File file = new File("testdata/booking.txt");
+		if (file.exists()) {
+			wf();
+		}else {
+			new File("testdata").mkdir();
+			wf();
+		}
+		
+	}
+	public void wf() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("testdata/booking.txt", true);
 		write.append(getNumID()+"\t"+getName()+"\t"+getPhone()+"\t"+getTable()+"\t"+getTime()+"\t"+date.format(new Date())+"\n");
