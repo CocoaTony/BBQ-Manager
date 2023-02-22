@@ -1,10 +1,16 @@
 package project;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.ImageIcon;
 
 public class UITable {
 
@@ -38,12 +44,29 @@ public class UITable {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 720, 1600);
+		frame.getContentPane().setBackground(Color.PINK);
+		frame.setBounds(100, 100, 1200, 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
+		ImageIcon backicon = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\ย้อนกลับ.png");
 		
-		JLabel lblNewLabel = new JLabel("Test");
-		frame.getContentPane().add(lblNewLabel, BorderLayout.CENTER);
-	}
+		JButton BackMainUI = new JButton("");
+		BackMainUI.setBackground(Color.WHITE);
+		BackMainUI.setIcon(new ImageIcon(backicon.getImage().getScaledInstance(89, 52, Image.SCALE_SMOOTH)));
+		BackMainUI.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		BackMainUI.setBounds(10, 75, 71, 52);
+		frame.getContentPane().add(BackMainUI);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\project\\White_full.png"));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(0, 62, 704, 81);
+		frame.getContentPane().add(lblNewLabel);
+		
 
+	}
 }

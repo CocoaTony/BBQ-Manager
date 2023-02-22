@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
@@ -55,7 +56,7 @@ public class UI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 720, 1600);
+		frame.setBounds(100, 100, 1200, 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(0, 1, 0, 0));
 		
@@ -63,17 +64,10 @@ public class UI {
 		frame.setIconImage(image.getImage());
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(227, 158, 147));
+		panel.setBackground(Color.PINK);
 		panel.setForeground(new Color(0, 0, 0));
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("ลูกชิ้นหมูกระทะ\r\n");
-		lblNewLabel.setBounds(0, 41, 704, 135);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("RSU", Font.PLAIN, 93));
-		panel.add(lblNewLabel);
 		
 		JButton Button1 = new JButton("จองโต๊ะ");
 		Button1.setBackground(Color.WHITE);
@@ -89,7 +83,7 @@ public class UI {
 				}
 			}
 		});
-		Button1.setBounds(140, 205, 439, 189);
+		Button1.setBounds(792, 428, 350, 129);
 		panel.add(Button1);
 		
 		JButton Button2 = new JButton("ออเดอร์");
@@ -105,7 +99,7 @@ public class UI {
 			}
 		});
 		Button2.setBackground(Color.WHITE);
-		Button2.setBounds(140, 440, 439, 189);
+		Button2.setBounds(792, 598, 350, 129);
 		panel.add(Button2);
 		
 		JButton Button3 = new JButton("เช็คบิล");
@@ -121,7 +115,20 @@ public class UI {
 			}
 		});
 		Button3.setBackground(Color.WHITE);
-		Button3.setBounds(140, 675, 439, 189);
+		Button3.setBounds(792, 253, 350, 129);
 		panel.add(Button3);
+		
+		JLabel lblNewLabel = new JLabel("");
+		ImageIcon MainPic = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\project\\Pog.jpg");
+		lblNewLabel.setIcon(new ImageIcon(MainPic.getImage().getScaledInstance(709, 811, Image.SCALE_SMOOTH)));
+		lblNewLabel.setBounds(0, 0, 709, 811);
+		panel.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("MENU");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("RSU", Font.BOLD | Font.ITALIC, 79));
+		lblNewLabel_1.setBounds(719, 0, 475, 259);
+		panel.add(lblNewLabel_1);
 	}
 }

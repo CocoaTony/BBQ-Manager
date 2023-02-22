@@ -36,7 +36,7 @@ public class UICheckbill {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 720, 1600);
+		frame.setBounds(100, 100, 1200, 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
