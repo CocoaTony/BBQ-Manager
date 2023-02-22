@@ -49,11 +49,9 @@ public class UITable {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		ImageIcon backicon = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\ย้อนกลับ.png");
-		
+
 		JButton BackMainUI = new JButton("");
 		BackMainUI.setBackground(Color.WHITE);
-		BackMainUI.setIcon(new ImageIcon(backicon.getImage().getScaledInstance(89, 52, Image.SCALE_SMOOTH)));
 		BackMainUI.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -62,7 +60,6 @@ public class UITable {
 		frame.getContentPane().add(BackMainUI);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\project\\White_full.png"));
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 62, 704, 81);
 		frame.getContentPane().add(lblNewLabel);
