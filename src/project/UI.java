@@ -81,25 +81,45 @@ public class UI {
 		Button1.setFont(new Font("RSU", Font.PLAIN, 99));
 		Button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==Button1) {
+					frame.dispose();
+					UITable Table = new UITable();
+					Table.frame.setVisible(true);
+					
+				}
 			}
 		});
 		Button1.setBounds(140, 205, 439, 189);
 		panel.add(Button1);
 		
 		JButton Button2 = new JButton("ออเดอร์");
-		Button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		Button2.setForeground(Color.BLACK);
 		Button2.setFont(new Font("RSU", Font.PLAIN, 99));
+		Button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==Button2) {
+					frame.dispose();
+					UIOrder OrdermenuFrame = new UIOrder();
+					OrdermenuFrame.frame.setVisible(true);
+				}
+			}
+		});
 		Button2.setBackground(Color.WHITE);
 		Button2.setBounds(140, 440, 439, 189);
 		panel.add(Button2);
 		
-		JButton Button3 = new JButton("เก็บเงิน");
+		JButton Button3 = new JButton("เช็คบิล");
 		Button3.setForeground(Color.BLACK);
 		Button3.setFont(new Font("RSU", Font.PLAIN, 99));
+		Button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==Button3) {
+					frame.dispose();
+					UICheckbill CheckBill = new UICheckbill();
+					CheckBill.frame.setVisible(true);
+				}
+			}
+		});
 		Button3.setBackground(Color.WHITE);
 		Button3.setBounds(140, 675, 439, 189);
 		panel.add(Button3);

@@ -3,10 +3,12 @@ package project;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
 
 public class UITable {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -36,8 +38,12 @@ public class UITable {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 720, 1600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		
+		JLabel lblNewLabel = new JLabel("Test");
+		frame.getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 	}
 
 }
