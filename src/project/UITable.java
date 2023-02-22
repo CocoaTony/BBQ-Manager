@@ -45,24 +45,26 @@ public class UITable {
 	private void initialize() {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.PINK);
-		frame.setBounds(100, 100, 1200, 850);
+		ImageIcon BackIcon = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\ย้อนกลับ.png");
+		frame.setBounds(100, 100, 700, 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 
-		JButton BackMainUI = new JButton("");
-		BackMainUI.setBackground(Color.WHITE);
-		BackMainUI.addActionListener(new ActionListener() {
+		JButton Backbutton = new JButton("");
+		Backbutton.setBackground(Color.WHITE);
+		Backbutton.setIcon(new ImageIcon(BackIcon.getImage().getScaledInstance(118, 51, Image.SCALE_AREA_AVERAGING)));
+		Backbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==Backbutton) {
+					frame.dispose();
+					UI MainUI = new UI();
+					MainUI.frame.setVisible(true);
+				}
 			}
 		});
-		BackMainUI.setBounds(10, 75, 71, 52);
-		frame.getContentPane().add(BackMainUI);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(0, 62, 704, 81);
-		frame.getContentPane().add(lblNewLabel);
+		Backbutton.setBounds(10, 11, 118, 51);
+		frame.getContentPane().add(Backbutton);
 		
 
 	}

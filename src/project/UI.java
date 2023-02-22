@@ -26,7 +26,7 @@ import java.awt.event.ActionEvent;
 
 public class UI {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
