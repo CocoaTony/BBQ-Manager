@@ -119,8 +119,7 @@ public class UI {
 		panel.add(Button3);
 		
 		JLabel lblNewLabel = new JLabel("");
-		ImageIcon MainPic = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\project\\Pog.jpg");
-		lblNewLabel.setIcon(new ImageIcon(MainPic.getImage().getScaledInstance(709, 811, Image.SCALE_SMOOTH)));
+		lblNewLabel.setIcon(new ImageIcon(UI.class.getResource("/project/Pog.jpg")));
 		lblNewLabel.setBounds(0, 0, 709, 811);
 		panel.add(lblNewLabel);
 		
