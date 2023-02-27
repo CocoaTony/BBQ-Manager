@@ -5,10 +5,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class GUITEST {
+public class GUITEST extends GKGKGKGK{
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField textField;
 
 	/**
@@ -44,10 +46,18 @@ public class GUITEST {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("table");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				GKGKGKGK test = new GKGKGKGK();
+				test.frame.setVisible(true);
+				System.out.println(button);
+			}
+		});
 		btnNewButton.setBounds(236, 100, 85, 21);
 		frame.getContentPane().add(btnNewButton);
 		
-		textField = new JTextField();
+		textField = new JTextField(button);
 		textField.setBounds(45, 101, 96, 19);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);

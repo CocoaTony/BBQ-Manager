@@ -15,7 +15,9 @@ import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.JTextField;
 
-public class UITable {
+import fortest.GUITEST;
+
+public class UITable extends UI_select_table{
 
 	JFrame frame;
 	private JTextField name;
@@ -23,17 +25,8 @@ public class UITable {
 	private JTextField time_start;
 	private JTextField time_end;
 	private JTextField selected_table;
-	private String change_Text;
 	
-
-	public String getChange_Text() {
-		return change_Text;
-	}
-
-	public void setChange_Text(String change_Text) {
-		this.change_Text = change_Text;
-	}
-
+	
 	/**
 	 * Launch the application.
 	 */
@@ -148,6 +141,7 @@ public class UITable {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					frame.dispose();
+					System.out.println(button);
 					UI_select_table select = new UI_select_table();
 					select.frame.setVisible(true);
 				}
@@ -156,7 +150,7 @@ public class UITable {
 		btnNewButton.setBounds(335, 416, 109, 31);
 		frame.getContentPane().add(btnNewButton);
 		
-		selected_table = new JTextField();
+		selected_table = new JTextField(button);
 		selected_table.setBounds(210, 419, 115, 24);
 		frame.getContentPane().add(selected_table);
 		selected_table.setColumns(10);
