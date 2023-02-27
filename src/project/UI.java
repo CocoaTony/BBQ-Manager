@@ -22,6 +22,7 @@ import java.awt.Insets;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class UI {
@@ -93,8 +94,15 @@ public class UI {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==Button2) {
 					frame.dispose();
-					UIOrder OrdermenuFrame = new UIOrder();
-					OrdermenuFrame.frame.setVisible(true);
+					UIOrder OrdermenuFrame;
+					try {
+						OrdermenuFrame = new UIOrder();
+						OrdermenuFrame.frame.setVisible(true);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
 				}
 			}
 		});
