@@ -131,6 +131,11 @@ public class UITable {
 		frame.getContentPane().add(lblNewLabel_1_1_1_1);
 		
 		JButton save = new JButton("บันทึกผล");
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		save.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		save.setBounds(315, 601, 115, 66);
 		frame.getContentPane().add(save);
