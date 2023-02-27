@@ -24,6 +24,7 @@ public class UITable {
 	private JTextField time_end;
 	private JTextField selected_table;
 	private String change_Text;
+	
 
 	public String getChange_Text() {
 		return change_Text;
@@ -78,6 +79,7 @@ public class UITable {
 			
 		});
 		Backbutton.setBounds(30, 10, 102, 31);
+		
 		frame.getContentPane().add(Backbutton);
 		
 		JLabel lblNewLabel = new JLabel("ชื่อร้าน");
@@ -131,6 +133,11 @@ public class UITable {
 		frame.getContentPane().add(lblNewLabel_1_1_1_1);
 		
 		JButton save = new JButton("บันทึกผล");
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		save.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		save.setBounds(315, 601, 115, 66);
 		frame.getContentPane().add(save);
@@ -153,6 +160,7 @@ public class UITable {
 		selected_table.setBounds(210, 419, 115, 24);
 		frame.getContentPane().add(selected_table);
 		selected_table.setColumns(10);
+		
 		
 
 	}
