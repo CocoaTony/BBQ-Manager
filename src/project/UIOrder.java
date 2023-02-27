@@ -18,6 +18,13 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -25,6 +32,45 @@ import javax.swing.JScrollPane;
 public class UIOrder {
 
 	JFrame frame;
+	
+	
+	//**Method
+
+	public static int getcount() throws IOException {
+		Scanner scan = new Scanner(new File("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt"));
+		int count = 0;
+		while(scan.hasNext()){
+			String line = scan.nextLine();
+			String[] spitLine = line.split(" ");
+			for(int i =0;i<spitLine.length;i++) {
+				if(i%2 == 0) {
+					count +=1;
+				}
+			}
+		}
+		return count;
+	}
+	
+	public static String[] getListFOOD()  throws IOException {
+		// TODO Auto-generated method stub
+		String[] TeenYai = new String[getcount()];
+		Scanner scan = new Scanner(new File("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt"));
+		
+		int count = -1;
+		while(scan.hasNext()){
+			String line = scan.nextLine();
+			String[] spitLine = line.split(" ");
+			for(int i =0;i<spitLine.length;i++) {
+				if(i==0) {
+					count += 1;
+					TeenYai[count] = spitLine[i];
+				}
+			}
+		}
+		scan.close();
+		return TeenYai;
+	}
+
 
 	/**
 	 * Launch the application.
@@ -44,15 +90,16 @@ public class UIOrder {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public UIOrder() {
+	public UIOrder() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.PINK);
 		frame.setBounds(100, 100,1300 , 850);
@@ -101,6 +148,8 @@ public class UIOrder {
 		
 		//TEXT*********
 		
+		
+		
 		JLabel TableTEXT = new JLabel("โต๊ะ");
 		TableTEXT.setBounds(0, 87, 113, 68);
 		TableTEXT.setHorizontalAlignment(SwingConstants.CENTER);
@@ -108,20 +157,48 @@ public class UIOrder {
 		frame.getContentPane().add(TableTEXT);
 		
 		JLabel OrderTEXT = new JLabel("ORDER");
+		OrderTEXT.setBounds(155, 87, 767, 68);
 		OrderTEXT.setHorizontalAlignment(SwingConstants.CENTER);
 		OrderTEXT.setFont(new Font("RSU", Font.BOLD, 80));
-		OrderTEXT.setBounds(155, 87, 767, 68);
 		frame.getContentPane().add(OrderTEXT);
 		
+		//Show table?
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(1041, 73, 214, 96);
+		lblNewLabel.setFont(new Font("RSU", Font.PLAIN, 31));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		frame.getContentPane().add(lblNewLabel);
 		
-		String[] kuy = new String[] {"H","World","A","B","C"};
+		
+		String[] kuy = new String[] {"Table01","Table02","Table03","Table04","Table05"};
 		
 		//Show table + select********
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 180, 91, 322);
-		frame.getContentPane().add(scrollPane);
-		JList list = new JList(kuy);
-		scrollPane.setViewportView(list);
+		JScrollPane TablePane = new JScrollPane();
+		TablePane.setBounds(10, 180, 91, 322);
+		frame.getContentPane().add(TablePane);
+		//List in panel
+		JList TableList = new JList(kuy);
+		TableList.setFont(new Font("RSU", Font.PLAIN, 15));
+		TablePane.setViewportView(TableList);
+		
+		
+		
+		//FoodList
+		JScrollPane FoodPane = new JScrollPane();
+		FoodPane.setBounds(167, 180, 404, 607);
+		frame.getContentPane().add(FoodPane);
+		
+		//List***
+		String[] ListFoodTeen = getListFOOD();
+		
+		
+		//***
+		JList Foodlist = new JList(ListFoodTeen);
+		Foodlist.setFont(new Font("RSU", Font.PLAIN, 15));
+		FoodPane.setViewportView(Foodlist);
+		
+		
+		
 		
 	
 		
