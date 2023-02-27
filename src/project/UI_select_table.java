@@ -11,8 +11,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-public class UI_select_table {
+public class UI_select_table extends UITable{
 
 	JFrame frame;
 
@@ -71,11 +70,7 @@ public class UI_select_table {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==table_A01) {
 					frame.dispose();
-					table.getSelected_table();
-					table.setSelected_table("A01");
 					table.frame.setVisible(true);
-
-					
 					
 					
 				}

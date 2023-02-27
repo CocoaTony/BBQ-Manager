@@ -24,6 +24,7 @@ public class UITable {
 	private JTextField time_end;
 	private JTextField selected_table;
 	private String change_Text;
+	
 
 	public String getChange_Text() {
 		return change_Text;
@@ -78,6 +79,7 @@ public class UITable {
 			
 		});
 		Backbutton.setBounds(30, 10, 102, 31);
+		
 		frame.getContentPane().add(Backbutton);
 		
 		JLabel lblNewLabel = new JLabel("ชื่อร้าน");
@@ -153,6 +155,7 @@ public class UITable {
 		selected_table.setBounds(210, 419, 115, 24);
 		frame.getContentPane().add(selected_table);
 		selected_table.setColumns(10);
+		
 		
 
 	}

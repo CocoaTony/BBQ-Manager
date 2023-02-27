@@ -24,6 +24,5 @@ public class checkbill {
 			int price_per_person = Integer.parseInt(list[3]);			
 			System.out.printf("Total price:\t%d",people_person*price_per_person);
 		}
-		
 	}
 }
