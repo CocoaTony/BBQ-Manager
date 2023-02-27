@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -16,14 +17,14 @@ import java.awt.Font;
 import javax.swing.JTextField;
 
 import fortest.GUITEST;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class UITable extends UI_select_table{
 
 	JFrame frame;
 	private JTextField name;
 	private JTextField phone;
-	private JTextField time_start;
-	private JTextField time_end;
 	private JTextField selected_table;
 	
 	
@@ -31,6 +32,8 @@ public class UITable extends UI_select_table{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		String filename;
+		String dir = "tableID";
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -110,16 +113,6 @@ public class UITable extends UI_select_table{
 		phone.setBounds(210, 215, 389, 31);
 		frame.getContentPane().add(phone);
 		
-		time_start = new JTextField();
-		time_start.setColumns(10);
-		time_start.setBounds(210, 295, 140, 31);
-		frame.getContentPane().add(time_start);
-		
-		time_end = new JTextField();
-		time_end.setColumns(10);
-		time_end.setBounds(459, 295, 140, 31);
-		frame.getContentPane().add(time_end);
-		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel(" ถึง");
 		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1_1_1_1.setBounds(386, 298, 118, 21);
@@ -128,7 +121,9 @@ public class UITable extends UI_select_table{
 		JButton save = new JButton("บันทึกผล");
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				name.getText();
+				phone.getText();
+				File flie = new File(dir);
 			}
 		});
 		save.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -154,6 +149,16 @@ public class UITable extends UI_select_table{
 		selected_table.setBounds(210, 419, 115, 24);
 		frame.getContentPane().add(selected_table);
 		selected_table.setColumns(10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00", "22.00"}));
+		comboBox.setBounds(209, 292, 116, 34);
+		frame.getContentPane().add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00", "22.00"}));
+		comboBox_1.setBounds(450, 292, 116, 34);
+		frame.getContentPane().add(comboBox_1);
 		
 		
 
