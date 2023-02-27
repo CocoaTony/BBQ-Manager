@@ -45,13 +45,12 @@ public class UIOrder {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.PINK);
 		frame.getContentPane().setLayout(null);
-		ImageIcon BackIcon = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\ย้อนกลับ.png");
 		frame.setBounds(100, 100, 700, 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton Backbutton = new JButton("New button");
 		Backbutton.setBackground(Color.WHITE);
-		Backbutton.setIcon(new ImageIcon(BackIcon.getImage().getScaledInstance(118, 51, Image.SCALE_AREA_AVERAGING)));
+		Backbutton.setIcon(new ImageIcon(UIOrder.class.getResource("/project/ย้อนกลับ.png")));
 		Backbutton.setBounds(10, 11, 118, 51);
 		frame.getContentPane().add(Backbutton);
 		Backbutton.addActionListener(new ActionListener() {
