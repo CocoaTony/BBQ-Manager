@@ -7,17 +7,32 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import fortest.GUITEST;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-public class UI_select_table extends UITable{
+public class UI_select_table {
 
 	JFrame frame;
-
+	public static String button;
+	
 	/**
 	 * Launch the application.
 	 */
+	public void getTable(String value) {
+		button=value;
+		UITable table = new UITable();
+		table.frame.setVisible(true);
+		frame.dispose();
+		
+}
+	public void getBack() {
+		UITable table1 = new UITable();
+		table1.frame.setVisible(true);
+		frame.dispose();
+	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,7 +57,7 @@ public class UI_select_table extends UITable{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		UITable table = new UITable();
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(255, 192, 203));
 		frame.getContentPane().setLayout(null);
@@ -56,10 +71,7 @@ public class UI_select_table extends UITable{
 		JButton Backbutton = new JButton("Go back");
 		Backbutton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource() == Backbutton) {
-					frame.dispose();
-					table.frame.setVisible(true);
-				}
+				getBack();
 			}
 		});
 		Backbutton.setBounds(26, 10, 85, 21);
@@ -68,12 +80,7 @@ public class UI_select_table extends UITable{
 		JButton table_A01 = new JButton("A01");
 		table_A01.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==table_A01) {
-					frame.dispose();
-					table.frame.setVisible(true);
-					
-					
-				}
+				getTable(table_A01.getText());
 			}
 		});
 		table_A01.setBackground(new Color(218, 165, 32));
@@ -82,18 +89,30 @@ public class UI_select_table extends UITable{
 		frame.getContentPane().add(table_A01);
 		
 		JButton table_A02 = new JButton("A02");
+		table_A02.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_A02.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_A02.setBackground(new Color(218, 165, 32));
 		table_A02.setBounds(127, 228, 104, 52);
 		frame.getContentPane().add(table_A02);
 		
 		JButton table_A03 = new JButton("A03");
+		table_A03.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_A03.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_A03.setBackground(new Color(218, 165, 32));
 		table_A03.setBounds(127, 335, 104, 52);
 		frame.getContentPane().add(table_A03);
 		
 		JButton table_A04 = new JButton("A04");
+		table_A04.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_A04.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_A04.setBackground(new Color(218, 165, 32));
 		table_A04.setBounds(127, 455, 104, 52);
@@ -112,18 +131,30 @@ public class UI_select_table extends UITable{
 		frame.getContentPane().add(table_A06);
 		
 		JButton table_B01 = new JButton("B01");
+		table_B01.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_B01.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_B01.setBackground(new Color(218, 165, 32));
 		table_B01.setBounds(318, 127, 104, 52);
 		frame.getContentPane().add(table_B01);
 		
 		JButton table_B02 = new JButton("B02");
+		table_B02.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_B02.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_B02.setBackground(new Color(218, 165, 32));
 		table_B02.setBounds(318, 228, 104, 52);
 		frame.getContentPane().add(table_B02);
 		
 		JButton table_B03 = new JButton("B03");
+		table_B03.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_B03.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_B03.setBackground(new Color(218, 165, 32));
 		table_B03.setBounds(318, 335, 104, 52);
