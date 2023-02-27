@@ -45,8 +45,10 @@ public class UIOrder {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.PINK);
 		frame.getContentPane().setLayout(null);
-		frame.setBounds(100, 100, 700, 850);
+		frame.setBounds(100, 100,1300 , 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		ImageIcon white = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\project\\White_full.png");
 		
 		JButton Backbutton = new JButton("New button");
 		Backbutton.setBackground(Color.WHITE);
@@ -64,6 +66,22 @@ public class UIOrder {
 		});
 		
 		
+		JLabel White = new JLabel("");
+		White.setIcon(new ImageIcon(white.getImage().getScaledInstance(3,971,Image.SCALE_SMOOTH)));
+		White.setBounds(151, 73, 3, 971);
+		frame.getContentPane().add(White);
+		
+		JLabel White1 = new JLabel("");
+		White1.setIcon(new ImageIcon(white.getImage().getScaledInstance(1334,3,Image.SCALE_SMOOTH)));
+		White1.setBounds(-27, 73, 1334, 3);
+		frame.getContentPane().add(White1);
+		
+		JLabel White2 = new JLabel("");
+		White2.setIcon(new ImageIcon(white.getImage().getScaledInstance(1334,3,Image.SCALE_SMOOTH)));
+		White2.setBounds(-27, 166, 1334, 3);
+		frame.getContentPane().add(White2);
+		
+		
+		
 	}
-
 }
