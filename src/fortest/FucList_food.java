@@ -10,7 +10,7 @@ public class FucList_food {
 	private int[] quantity;
 	
 	
-	//For Size in method getList
+	//For Size in method getList*****
 	public int count() throws IOException{
 		int count1 = 0 ;
 		int check = 0;
@@ -28,6 +28,7 @@ public class FucList_food {
 		return count1;
 	}
 	
+	//Main Method in FucList_FOOD*****
 	public String[] getList(int numberCommand) throws IOException {
 		Scanner scan = new Scanner(new File("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt"));
 		int check = 0;
@@ -52,11 +53,23 @@ public class FucList_food {
 		return list;
 		
 	}
+	
+	//*String[] to Int[]
+	public int[] StringtoInt(int numberCommand) throws IOException {
+		String[] List = getList(numberCommand);
+		int[] LISTisINT = new int[count()];
+		for(int i = 0;i<List.length;i++) {
+			LISTisINT[i] = Integer.parseInt(List[i]);
+		}
+		return LISTisINT;
+	}
+	
 	//FOOD
 	public String[] getNameFood() {
 		return nameFood;
 	}
-	public void setNameFood() {
+	public void setNameFood() throws IOException {
+		this.nameFood = getList(1);
 		
 	}
 	
@@ -64,8 +77,8 @@ public class FucList_food {
 	public int[] getPrice() {
 		return price;
 	}
-	public void setPrice() {
-		
+	public void setPrice()throws IOException {
+		this.price = StringtoInt(2);
 	}
 	
 	//Quantity
@@ -73,8 +86,8 @@ public class FucList_food {
 	public int[] getQuantity() {
 		return quantity;
 	}
-	public void setQuantity() {
-		
+	public void setQuantity() throws IOException{
+		this.quantity = StringtoInt(3);
 	}
 	
 	
