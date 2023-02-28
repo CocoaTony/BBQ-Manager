@@ -10,6 +10,13 @@ public class FucList_food {
 	private int[] quantity;
 	
 	
+	
+	public FucList_food() throws IOException {
+		setNameFood();
+		setPrice();
+		setQuantity();
+	}
+
 	//For Size in method getList*****
 	public int count() throws IOException{
 		int count1 = 0 ;
@@ -31,6 +38,7 @@ public class FucList_food {
 	//Main Method in FucList_FOOD*****
 	public String[] getList(int numberCommand) throws IOException {
 		Scanner scan = new Scanner(new File("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt"));
+		int count = -1;
 		int check = 0;
 		String[] list = new String[count()];
 		while(scan.hasNext()){
@@ -41,15 +49,26 @@ public class FucList_food {
 					check += 1;
 					continue;
 				}else if(numberCommand == 1) {
-					list[i] = ListForLength[0]; 
+					if(i==0) {
+						count += 1;
+						list[count] = ListForLength[0];
+					}
 				}else if(numberCommand == 2) {
-					list[i] = ListForLength[1];
+					if(i==0) {
+						count += 1;
+						list[count] = ListForLength[1];
+					}
+					
 				}else if(numberCommand == 3) {
-					list[i] = ListForLength[2];
+					if(i==0) {
+						count += 1;
+						list[count] = ListForLength[2];
+					}
+					
 				}
 			}
-			scan.close();
 		}
+		scan.close();
 		return list;
 		
 	}
@@ -59,7 +78,8 @@ public class FucList_food {
 		String[] List = getList(numberCommand);
 		int[] LISTisINT = new int[count()];
 		for(int i = 0;i<List.length;i++) {
-			LISTisINT[i] = Integer.parseInt(List[i]);
+			String Index = List[i];
+			LISTisINT[i] =  Integer.parseInt(Index);
 		}
 		return LISTisINT;
 	}
@@ -77,6 +97,11 @@ public class FucList_food {
 	public int[] getPrice() {
 		return price;
 	}
+	
+	public int getPriceIndex(int i) {
+		return price[i];
+	}
+	
 	public void setPrice()throws IOException {
 		this.price = StringtoInt(2);
 	}
@@ -85,6 +110,10 @@ public class FucList_food {
 	
 	public int[] getQuantity() {
 		return quantity;
+	}
+	
+	public int getQuantity(int i) {
+		return quantity[i];
 	}
 	public void setQuantity() throws IOException{
 		this.quantity = StringtoInt(3);

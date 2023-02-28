@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.JobAttributes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,19 +49,23 @@ public class UIORDERTEST {
 
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public UIORDERTEST() {
+	public UIORDERTEST() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		//Import FucList
+		FucList_food fuction = new FucList_food();
 		
 		//test list table
 		String[] kuy = new String[] {"Table01","Table02","Table03","Table04","Table05"};
@@ -89,19 +94,22 @@ public class UIORDERTEST {
 		MenuText.setFont(new Font("Tahoma", Font.BOLD, 19));
 		Menu.setColumnHeaderView(MenuText);
 		
-		JList Menulist = new JList();
-		Menu.setViewportView(Menulist);
 		
-		//JButton Button = new JButton("Get value");
-		//Button.setBounds(125, 491, 89, 23);
-		//frame.getContentPane().add(Button);
-		//Button.addActionListener(new ActionListener() {
-		//	public void actionPerformed(ActionEvent e) {
-		//		String a = (String) list.getSelectedValue();
-		//		JOptionPane.showMessageDialog(null, a);
+		JList Menulist = new JList(fuction.getNameFood());
+		Menulist.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		Menu.setViewportView(Menulist);
+		System.out.println(Menulist.getSelectedIndex());
+		
+		JButton Button = new JButton("ยืนยัน");
+		Button.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		Button.setBounds(350, 491, 89, 23);
+		frame.getContentPane().add(Button);
+		Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
 						
-		//	}
-	//	});
+			}
+		});
 		
 		
 		
