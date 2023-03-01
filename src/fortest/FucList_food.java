@@ -7,14 +7,13 @@ import java.util.Scanner;
 public class FucList_food {
 	private String[] nameFood;
 	private int[] price;
-	private int[] quantity;
 	
 	
 	
 	public FucList_food() throws IOException {
 		setNameFood();
 		setPrice();
-		setQuantity();
+
 	}
 
 	//For Size in method getList*****
@@ -59,12 +58,6 @@ public class FucList_food {
 						list[count] = ListForLength[1];
 					}
 					
-				}else if(numberCommand == 3) {
-					if(i==0) {
-						count += 1;
-						list[count] = ListForLength[2];
-					}
-					
 				}
 			}
 		}
@@ -106,18 +99,7 @@ public class FucList_food {
 		this.price = StringtoInt(2);
 	}
 	
-	//Quantity
 	
-	public int[] getQuantity() {
-		return quantity;
-	}
-	
-	public int getQuantity(int i) {
-		return quantity[i];
-	}
-	public void setQuantity() throws IOException{
-		this.quantity = StringtoInt(3);
-	}
 	
 	
 	
