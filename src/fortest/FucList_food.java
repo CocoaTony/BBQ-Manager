@@ -77,7 +77,7 @@ public class FucList_food {
 		return LISTisINT;
 	}
 	
-	//FOOD
+	//List Index
 	public String[] getNameFood() {
 		return nameFood;
 	}
