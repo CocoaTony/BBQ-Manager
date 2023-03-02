@@ -26,10 +26,13 @@ import project.UITable;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class UIORDERTEST {
 
 	private JFrame frame;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -85,8 +88,11 @@ public class UIORDERTEST {
 		
 		
 		//**Menu
+		
+		int[] result = new int[] {1};
+		
 		JScrollPane Menu = new JScrollPane();
-		Menu.setBounds(135, 85, 200, 429);
+		Menu.setBounds(135, 85, 200, 247);
 		frame.getContentPane().add(Menu);
 		
 		JLabel MenuText = new JLabel("Menu");
@@ -102,14 +108,46 @@ public class UIORDERTEST {
 		
 		JButton Button = new JButton("ยืนยัน");
 		Button.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		Button.setBounds(350, 491, 89, 23);
+		Button.setBounds(144, 400, 89, 23);
 		frame.getContentPane().add(Button);
-		Button.addActionListener(new ActionListener() {
+		
+		JLabel Result = new JLabel(String.valueOf(result[0]));
+		Result.setBounds(204, 342, 45, 13);
+		frame.getContentPane().add(Result);
+		
+		JButton btnNewButton = new JButton("เพิ่ม");
+		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-						
+				int add_result = result[0]+1;
+				result[0] = add_result;
+				Result.setText(String.valueOf(result[0]));
 			}
 		});
+		btnNewButton.setBounds(144, 365, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("ลด");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int add_result = result[0]-1;
+				if(add_result == 0) {
+					result[0] = 1;
+				}else {
+					result[0] = add_result;
+				}
+				Result.setText(String.valueOf(result[0]));
+				
+			}
+		});
+		btnNewButton_1.setBounds(243, 366, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		
+		
 		
 		
 		
