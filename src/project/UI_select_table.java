@@ -14,6 +14,15 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 public class UI_select_table {
+//	private String namemom;
+//	
+//
+//	public String getNamemom() {
+//		return namemom;
+//	}
+//	public void setNamemom(String namemom) {
+//		this.namemom = namemom;
+//	}
 
 	JFrame frame;
 	public static String button;

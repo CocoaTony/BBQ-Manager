@@ -5,29 +5,45 @@ import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
 import java.awt.Font;
 import javax.swing.JTextField;
-
-import fortest.GUITEST;
+import javax.swing.UIManager;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 public class UITable extends UI_select_table{
 
 	JFrame frame;
+	public static String namestr;
+	public static String phonenumber;
+	public static int t_starto;
+	public static int t_enda;
 	private JTextField name;
 	private JTextField phone;
 	private JTextField selected_table;
 	
 	
+	
+	public String getNamestr() {
+		return namestr;
+	}
+
+	public void setNamestr(String namestr) {
+		this.namestr = namestr;
+	}
+
 	/**
 	 * Launch the application.
 	 */
@@ -57,26 +73,15 @@ public class UITable extends UI_select_table{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Font Thai = new Font("RSU",Font.PLAIN,20);
+		UIManager.put("OptionPane.messageFont",Thai);
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.PINK);
 		frame.setBounds(100, 100, 700, 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton Backbutton = new JButton("Go back");
-		Backbutton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==Backbutton) {
-					frame.dispose();
-					UI MainUI = new UI();
-					MainUI.frame.setVisible(true);
-				}
-			}
-			
-		});
-		Backbutton.setBounds(30, 10, 102, 31);
 		
-		frame.getContentPane().add(Backbutton);
 		
 		JLabel lblNewLabel = new JLabel("ชื่อร้าน");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
@@ -106,9 +111,11 @@ public class UITable extends UI_select_table{
 		name = new JTextField();
 		name.setBounds(210, 137, 389, 31);
 		frame.getContentPane().add(name);
+		name.setText(namestr);
 		name.setColumns(10);
 		
 		phone = new JTextField();
+		phone.setText(phonenumber);
 		phone.setColumns(10);
 		phone.setBounds(210, 215, 389, 31);
 		frame.getContentPane().add(phone);
@@ -118,27 +125,39 @@ public class UITable extends UI_select_table{
 		lblNewLabel_1_1_1_1.setBounds(386, 298, 118, 21);
 		frame.getContentPane().add(lblNewLabel_1_1_1_1);
 		
-		JButton save = new JButton("บันทึกผล");
-		save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				name.getText();
-				phone.getText();
-				File flie = new File(dir);
-			}
-		});
-		save.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		save.setBounds(315, 601, 115, 66);
-		frame.getContentPane().add(save);
+		
+		
+		JComboBox t_start = new JComboBox();
+//		t_start.setSelectedIndex(t_starto);
+		t_start.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
+		t_start.setSelectedIndex(t_starto);
+		t_start.setBounds(209, 292, 116, 34);
+		frame.getContentPane().add(t_start);
+		
+		JComboBox t_end = new JComboBox();
+//		t_end.setSelectedIndex(t_enda);
+		t_end.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
+		t_end.setSelectedIndex(t_enda);
+		t_end.setBounds(450, 292, 116, 34);
+		frame.getContentPane().add(t_end);
 		
 		JButton btnNewButton = new JButton("เลือกโต๊ะ");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
+					if(t_start.getSelectedIndex() > t_end.getSelectedIndex()) {
+						JOptionPane.showMessageDialog(null,"กรุณาเลือกเวลาเริ่มจองโต๊ะก่อนเวลาเลิกจอง","Invalid Time",JOptionPane.OK_OPTION);
+					}else {
 					frame.dispose();
 					System.out.println(button);
+					namestr = name.getText();
+					phonenumber = phone.getText();
+					t_starto = t_start.getSelectedIndex();
+					t_enda = t_end.getSelectedIndex();
 					UI_select_table select = new UI_select_table();
 					select.frame.setVisible(true);
+					}
 				}
 			}
 		});
@@ -150,15 +169,47 @@ public class UITable extends UI_select_table{
 		frame.getContentPane().add(selected_table);
 		selected_table.setColumns(10);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00", "22.00"}));
-		comboBox.setBounds(209, 292, 116, 34);
-		frame.getContentPane().add(comboBox);
+		JButton save = new JButton("บันทึกผล");
+		save.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				name.getText();
+				phone.getText();
+				
+				try {
+					Booking bk = new Booking(name.getText(), phone.getText(), selected_table.getText() ,(String)t_start.getSelectedItem(), (String)t_end.getSelectedItem());
+					bk.wf();
+				} catch (ParseException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		save.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		save.setBounds(315, 601, 115, 66);
+		frame.getContentPane().add(save);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00", "22.00"}));
-		comboBox_1.setBounds(450, 292, 116, 34);
-		frame.getContentPane().add(comboBox_1);
+		JButton Backbutton = new JButton("Go back");
+		Backbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==Backbutton) {
+					namestr = "";
+					phonenumber = "";
+					button = "";
+					t_starto = 0;
+					t_enda = 0;
+					
+					frame.dispose();
+					
+					UI MainUI = new UI();
+					MainUI.frame.setVisible(true);
+				}
+			}
+			
+		});
+		Backbutton.setBounds(30, 10, 102, 31);
+		
+		frame.getContentPane().add(Backbutton);
+		
 		
 		
 
