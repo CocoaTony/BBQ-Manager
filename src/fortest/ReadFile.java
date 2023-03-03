@@ -4,23 +4,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class FucList_food {
-	private String[] nameFood;
+public class ReadFile {
+	private String[] name;
 	private int[] price;
 	
-	
-	
-	public FucList_food() throws IOException {
-		setNameFood();
-		setPrice();
 
-	}
 
 	//For Size in method getList*****
-	public int count() throws IOException{
+	public int count(String location) throws IOException{
 		int count1 = 0 ;
 		int check = 0;
-		Scanner scan = new Scanner(new File("D:\\JAVA-OOP-Project\\data\\food.txt"));
+		Scanner scan = new Scanner(new File(location));
 		while(scan.hasNext()){
 			scan.nextLine();
 			if(check == 0) {
@@ -35,11 +29,11 @@ public class FucList_food {
 	}
 	
 	//Main Method in FucList_FOOD*****
-	public String[] getList(int numberCommand) throws IOException {
-		Scanner scan = new Scanner(new File("D:\\JAVA-OOP-Project\\data\\food.txt"));
+	public String[] getList(int numberCommand,String location) throws IOException {
+		Scanner scan = new Scanner(new File(location));
 		int count = -1;
 		int check = 0;
-		String[] list = new String[count()];
+		String[] list = new String[count(location)];
 		while(scan.hasNext()){
 			String line = scan.nextLine();
 			String[] ListForLength = line.split(" ");
@@ -47,18 +41,20 @@ public class FucList_food {
 				if(check == 0){
 					check += 1;
 					continue;
-				}else if(numberCommand == 1) {
+				}else {
 					if(i==0) {
 						count += 1;
-						list[count] = ListForLength[0];
+						list[count] = ListForLength[numberCommand - 1];
 					}
-				}else if(numberCommand == 2) {
-					if(i==0) {
-						count += 1;
-						list[count] = ListForLength[1];
-					}
-					
 				}
+				
+				//else if(numberCommand == 2) {
+					//if(i==0) {
+						//count += 1;
+						//list[count] = ListForLength[1];
+					//}
+					
+				//}
 			}
 		}
 		scan.close();
@@ -67,9 +63,9 @@ public class FucList_food {
 	}
 	
 	//*String[] to Int[]
-	public int[] StringtoInt(int numberCommand) throws IOException {
-		String[] List = getList(numberCommand);
-		int[] LISTisINT = new int[count()];
+	public int[] StringtoInt(int numberCommand,String location) throws IOException {
+		String[] List = getList(numberCommand,location);
+		int[] LISTisINT = new int[count(location)];
 		for(int i = 0;i<List.length;i++) {
 			String Index = List[i];
 			LISTisINT[i] =  Integer.parseInt(Index);
@@ -78,11 +74,11 @@ public class FucList_food {
 	}
 	
 	//List Index
-	public String[] getNameFood() {
-		return nameFood;
+	public String[] getName() {
+		return name;
 	}
-	public void setNameFood() throws IOException {
-		this.nameFood = getList(1);
+	public void setName(int AddressINdata,String location) throws IOException {
+		this.name = getList(AddressINdata,location);
 		
 	}
 	
@@ -95,8 +91,8 @@ public class FucList_food {
 		return price[i];
 	}
 	
-	public void setPrice()throws IOException {
-		this.price = StringtoInt(2);
+	public void setPrice(int AddressINdata,String location)throws IOException {
+		this.price = StringtoInt(AddressINdata,location);
 	}
 	
 	

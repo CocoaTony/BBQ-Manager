@@ -68,7 +68,8 @@ public class UIORDERTEST {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		//Import FucList
-		FucList_food fuction = new FucList_food();
+		FileWriterAndRead fuction = new FileWriterAndRead();
+		fuction.setName(1, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
 		
 		//test list table
 		String[] kuy = new String[] {"Table01","Table02","Table03","Table04","Table05"};
@@ -78,12 +79,15 @@ public class UIORDERTEST {
 		scrollPane.setBounds(10, 85, 106, 429);
 		frame.getContentPane().add(scrollPane);
 		
-		JList Tablelist = new JList(kuy);
+		JList Tablelist = new JList(kuy);		
 		scrollPane.setViewportView(Tablelist);
 		JLabel TableText = new JLabel("Table");
 		TableText.setFont(new Font("Tahoma", Font.BOLD, 19));
 		TableText.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollPane.setColumnHeaderView(TableText);
+		
+		
+		//**Table
 		
 		
 		
@@ -101,33 +105,36 @@ public class UIORDERTEST {
 		Menu.setColumnHeaderView(MenuText);
 		
 		
-		JList Menulist = new JList(fuction.getNameFood());
+		JList Menulist = new JList(fuction.getName());
 		Menulist.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		Menu.setViewportView(Menulist);
 		System.out.println(Menulist.getSelectedIndex());
 		
-		JButton Button = new JButton("ยืนยัน");
-		Button.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		Button.setBounds(144, 400, 89, 23);
-		frame.getContentPane().add(Button);
+		//**Menu
+		
+		
+		
+		//จำนวนที่ต้องการ*****
 		
 		JLabel Result = new JLabel(String.valueOf(result[0]));
 		Result.setBounds(204, 342, 45, 13);
 		frame.getContentPane().add(Result);
 		
-		JButton btnNewButton = new JButton("เพิ่ม");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton AddButton = new JButton("เพิ่ม");
+		AddButton.setFont(new Font("RSU", Font.PLAIN, 11));
+		AddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int add_result = result[0]+1;
 				result[0] = add_result;
 				Result.setText(String.valueOf(result[0]));
 			}
 		});
-		btnNewButton.setBounds(144, 365, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		AddButton.setBounds(144, 365, 89, 23);
+		frame.getContentPane().add(AddButton);
 		
-		JButton btnNewButton_1 = new JButton("ลด");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton SubtractionButton = new JButton("ลด");
+		SubtractionButton.setFont(new Font("RSU", Font.PLAIN, 11));
+		SubtractionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int add_result = result[0]-1;
 				if(add_result == 0) {
@@ -139,13 +146,19 @@ public class UIORDERTEST {
 				
 			}
 		});
-		btnNewButton_1.setBounds(243, 366, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		SubtractionButton.setBounds(243, 366, 89, 23);
+		frame.getContentPane().add(SubtractionButton);
 		
-		Button.addActionListener(new ActionListener() {
+		JButton Confirm = new JButton("ยืนยัน");
+		Confirm.setFont(new Font("RSU", Font.PLAIN, 11));
+		Confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		Confirm.setBounds(144, 399, 89, 23);
+		frame.getContentPane().add(Confirm);
+		
+		//จำนวนที่ต้องการ*****
 		
 		
 		
