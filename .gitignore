@@ -2,3 +2,4 @@
 testdata/booking.txt
 data/booking.txt
 testdata/booking.txt
+*.txt

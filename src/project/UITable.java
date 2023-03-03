@@ -146,7 +146,7 @@ public class UITable extends UI_select_table{
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
-					if(t_start.getSelectedIndex() > t_end.getSelectedIndex()) {
+					if(t_start.getSelectedIndex() >= t_end.getSelectedIndex()) {
 						JOptionPane.showMessageDialog(null,"กรุณาเลือกเวลาเริ่มจองโต๊ะก่อนเวลาเลิกจอง","Invalid Time",JOptionPane.OK_OPTION);
 					}else {
 					frame.dispose();

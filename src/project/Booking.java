@@ -75,10 +75,16 @@ public class Booking {
 	public void writeFile() throws IOException {
 		
 		File file = new File("data/booking.txt");
+		File table = new File("data/table/"+getTable()+".txt");
 		if (file.exists()) {
 			wf();
 		}else {
 			new File("data").mkdir();
+			wf();
+		}if(file+"/"+table.exists()){
+			wf();
+		}else {
+			new File("data/table").mkdirs();
 			wf();
 		}
 	}
@@ -86,7 +92,10 @@ public class Booking {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("data/booking.txt", true);
 		write.append(getNumID()+"\t"+getName()+"\t"+getPhone()+"\t"+getTable()+"\t"+getTime_s()+"-"+getTime_e()+"\t"+date.format(new Date())+"\n");
+		FileWriter write_table = new FileWriter("data/table/"+getTable()+".txt");
+		write_table.append(getTime_s()+"-"+getTime_e());
 		write.close();
+		write_table.close();
 	}
 
 }

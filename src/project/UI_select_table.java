@@ -100,6 +100,7 @@ public class UI_select_table {
 		JButton table_A02 = new JButton("A02");
 		table_A02.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				getTable(table_A02.getText());
 			}
 		});
 		table_A02.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -110,6 +111,7 @@ public class UI_select_table {
 		JButton table_A03 = new JButton("A03");
 		table_A03.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				getTable(table_A03.getText());
 			}
 		});
 		table_A03.setFont(new Font("Tahoma", Font.PLAIN, 18));
