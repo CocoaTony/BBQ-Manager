@@ -15,14 +15,22 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollBar;
 import javax.swing.JTextArea;
 import javax.swing.JPopupMenu;
+import javax.swing.JRadioButton;
+
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.Scanner;
 
 import javax.swing.JList;
@@ -31,10 +39,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 
 public class UIOrder {
 
 	JFrame frame;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	
 	//**Method
@@ -170,110 +181,128 @@ public class UIOrder {
 		TablePane.setViewportView(TableList);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("หมูกระทะชุดเล็ก 150");
+		buttonGroup.add(chckbxNewCheckBox);
 		chckbxNewCheckBox.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox.setBackground(Color.WHITE);
 		chckbxNewCheckBox.setBounds(281, 183, 118, 21);
 		frame.getContentPane().add(chckbxNewCheckBox);
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("หมูกระทะชุดที่กลาง 250");
+		buttonGroup.add(chckbxNewCheckBox_1);
 		chckbxNewCheckBox_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1.setBounds(281, 206, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1 = new JCheckBox("หมูกระทะชุดใหญ่ 350");
+		buttonGroup.add(chckbxNewCheckBox_1_1);
 		chckbxNewCheckBox_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1.setBounds(281, 229, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1 = new JCheckBox("หมูหมัก 99");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1);
 		chckbxNewCheckBox_1_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1.setBounds(281, 252, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1 = new JCheckBox("กุ้ง 59");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1);
 		chckbxNewCheckBox_1_1_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1.setBounds(281, 275, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1 = new JCheckBox("เบคอน 59");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1);
 		chckbxNewCheckBox_1_1_1_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1.setBounds(281, 298, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1 = new JCheckBox("หมูสามชั้น 59");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1);
 		chckbxNewCheckBox_1_1_1_1_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1.setBounds(281, 321, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1 = new JCheckBox("ตับ 39");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1);
 		chckbxNewCheckBox_1_1_1_1_1_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1.setBounds(281, 344, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_1 = new JCheckBox("เต้าหู้ปลา 39");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_1);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_1.setBounds(281, 367, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_2 = new JCheckBox("ปลาดอลลี่ 39");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_2);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_2.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_2.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_2.setBounds(281, 389, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_2);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_3 = new JCheckBox("เห็ดเข็มทอง 39");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_3);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_3.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_3.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_3.setBounds(281, 412, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_3);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_4 = new JCheckBox("ปลาหมึกกรอบ 39");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_4);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_4.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_4.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_4.setBounds(281, 436, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_4);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_5 = new JCheckBox("ไข่ไก่ 10");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_5);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5.setBounds(281, 458, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_5);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_5_1 = new JCheckBox("หมี่หยก 10");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_1);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_1.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_1.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_1.setBounds(281, 481, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_1);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_5_2 = new JCheckBox("มาม่า 10");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_2);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_2.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_2.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_2.setBounds(281, 502, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_2);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_5_3 = new JCheckBox("ข้าวสวย 10");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_3);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_3.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_3.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_3.setBounds(281, 525, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_3);
 		
 		JCheckBox chckbxNewCheckBox_1_1_1_1_1_1_1_5_4 = new JCheckBox("ผัก 10");
+		buttonGroup.add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_4);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_4.setFont(new Font("RSU", Font.PLAIN, 10));
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_4.setBackground(Color.WHITE);
 		chckbxNewCheckBox_1_1_1_1_1_1_1_5_4.setBounds(281, 548, 140, 21);
 		frame.getContentPane().add(chckbxNewCheckBox_1_1_1_1_1_1_1_5_4);
 		
+		
+		
 		JEditorPane editorPane = new JEditorPane();
-		editorPane.setText("หมูหมัก 99");
-		editorPane.setBounds(277, 179, 379, 478);
+		editorPane.setBounds(272, 179, 379, 478);
 		frame.getContentPane().add(editorPane);
 		
 		JButton btnNewButton = new JButton("ยืนยัน");
@@ -282,11 +311,25 @@ public class UIOrder {
 		btnNewButton.setBounds(680, 616, 91, 41);
 		frame.getContentPane().add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
-
+			Enumeration<AbstractButton> food = buttonGroup.getElements();
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("success");
-				
+				while(food.hasMoreElements()) {
+					JCheckBox foodg = (JCheckBox) food.nextElement();
+					if(foodg.isSelected()) {
+						
+						FileWriter writer ;
+						try {
+							FileWriter Writer = new FileWriter("food.txt",true);
+							Writer.append(foodg.getText());
+							Writer.close();
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						
+					}
+				}
 			}
 			
 		});
