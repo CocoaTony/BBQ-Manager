@@ -129,6 +129,7 @@ public class UITable extends UI_select_table{
 		
 		JComboBox t_start = new JComboBox();
 //		t_start.setSelectedIndex(t_starto);
+		t_start.setFont(new Font("RSU",Font.PLAIN,14));
 		t_start.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
 		t_start.setSelectedIndex(t_starto);
 		t_start.setBounds(209, 292, 116, 34);
@@ -136,7 +137,8 @@ public class UITable extends UI_select_table{
 		
 		JComboBox t_end = new JComboBox();
 //		t_end.setSelectedIndex(t_enda);
-		t_end.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเริ่มจอง", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
+		t_end.setFont(new  Font("RSU",Font.PLAIN, 14));
+		t_end.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลาเลิกจอง", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
 		t_end.setSelectedIndex(t_enda);
 		t_end.setBounds(450, 292, 116, 34);
 		frame.getContentPane().add(t_end);
@@ -172,9 +174,8 @@ public class UITable extends UI_select_table{
 		JButton save = new JButton("บันทึกผล");
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				name.getText();
-				phone.getText();
-				
+				int confirm = JOptionPane.showConfirmDialog(null, "save?","Confirm", JOptionPane.YES_NO_OPTION);
+				if(confirm == JOptionPane.YES_OPTION) {
 				try {
 					Booking bk = new Booking(name.getText(), phone.getText(), selected_table.getText() ,(String)t_start.getSelectedItem(), (String)t_end.getSelectedItem());
 					bk.writeFile();
@@ -182,6 +183,14 @@ public class UITable extends UI_select_table{
 				} catch (ParseException | IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
+				}name.setText("");
+				phone.setText("");
+				selected_table.setText("");
+				button = "";
+				t_start.setSelectedIndex(0);
+				t_end.setSelectedIndex(0);
+				}else {
+					JOptionPane.showMessageDialog(null, "ยกเลิกการบันทึก", "Save cancel", JOptionPane.PLAIN_MESSAGE);
 				}
 			}
 		});
