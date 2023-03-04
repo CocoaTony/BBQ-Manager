@@ -177,6 +177,7 @@ public class UITable extends UI_select_table{
 				
 				try {
 					Booking bk = new Booking(name.getText(), phone.getText(), selected_table.getText() ,(String)t_start.getSelectedItem(), (String)t_end.getSelectedItem());
+					bk.writeFile();
 					bk.wf();
 				} catch (ParseException | IOException e1) {
 					// TODO Auto-generated catch block
