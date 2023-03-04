@@ -8,7 +8,14 @@ import java.util.Scanner;
 public class TestFuc {
 
 	public static void main(String[] args) throws IOException{
-		FileWriterAndRead a = new FileWriterAndRead();
-		a.WriteFile("A01","ไก่,หมู","50,60");
+		String Sot = "";
+		String set = Sot+"\n";
+		Scanner scan = new Scanner(System.in);
+		while(true) {
+			int user_input = scan.nextInt();
+			if(user_input == 1) {
+				String user = scan.nextLine();
+			}
 		}
+	}
 }

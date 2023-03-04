@@ -87,10 +87,6 @@ public class ReadFile {
 		return price;
 	}
 	
-	public int getPriceIndex(int i) {
-		return price[i];
-	}
-	
 	public void setPrice(int AddressINdata,String location)throws IOException {
 		this.price = StringtoInt(AddressINdata,location);
 	}

@@ -3,9 +3,11 @@ package fortest;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.JobAttributes;
+import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -28,15 +30,25 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.JTextArea;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
 
 public class UIORDERTEST {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField Menuorder;
 
 	/**
 	 * Launch the application.
 	 */
+
+	
+	
+	
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -87,6 +99,7 @@ public class UIORDERTEST {
 		scrollPane.setColumnHeaderView(TableText);
 		
 		
+		
 		//**Table
 		
 		
@@ -108,11 +121,24 @@ public class UIORDERTEST {
 		JList Menulist = new JList(fuction.getName());
 		Menulist.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		Menu.setViewportView(Menulist);
-		System.out.println(Menulist.getSelectedIndex());
 		
 		//**Menu
 		
+		//**Oreder
+		JScrollPane OrderForSoft = new JScrollPane();
+		OrderForSoft.setBounds(350, 85, 139, 247);
+		frame.getContentPane().add(OrderForSoft);
 		
+		JLabel LabelOrderForSoft = new JLabel("");
+		LabelOrderForSoft.setFont(new Font("Tahoma", Font.BOLD, 19));
+		LabelOrderForSoft.setHorizontalAlignment(SwingConstants.CENTER);
+		OrderForSoft.setColumnHeaderView(LabelOrderForSoft);
+		
+		Menuorder = new JTextField();
+		OrderForSoft.setViewportView(Menuorder);
+		Menuorder.setEditable(false);;
+		Menuorder.setColumns(10);
+		//**Order
 		
 		//จำนวนที่ต้องการ*****
 		
@@ -131,6 +157,8 @@ public class UIORDERTEST {
 		});
 		AddButton.setBounds(144, 365, 89, 23);
 		frame.getContentPane().add(AddButton);
+		
+		
 		
 		JButton SubtractionButton = new JButton("ลด");
 		SubtractionButton.setFont(new Font("RSU", Font.PLAIN, 11));
@@ -152,13 +180,27 @@ public class UIORDERTEST {
 		JButton Confirm = new JButton("ยืนยัน");
 		Confirm.setFont(new Font("RSU", Font.PLAIN, 11));
 		Confirm.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e){
+				LabelOrderForSoft.setText((String)Tablelist.getSelectedValue());
+				FileWriterAndRead fuction02 = new FileWriterAndRead();
+				try {
+					fuction02.setPrice(2, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
+					int[] save = fuction02.getPrice();
+					fuction02.WriteFileMenu((String)Menulist.getSelectedValue(), save[Tablelist.getSelectedIndex()]*result[0]);
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+				}
+				
 			}
 		});
 		Confirm.setBounds(144, 399, 89, 23);
 		frame.getContentPane().add(Confirm);
-		
 		//จำนวนที่ต้องการ*****
+		
+		//ListMenu ที่สั่ง
+		
+
 		
 		
 		

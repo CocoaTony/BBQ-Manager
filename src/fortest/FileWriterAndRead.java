@@ -1,5 +1,6 @@
 package fortest;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -8,21 +9,20 @@ public class FileWriterAndRead extends ReadFile {
 	public String menu;
 	public String pricemenu;
 	
-	public void WriteFile(String table,String menu,String pricemenu) throws IOException {
+	public void WriteFileBill(String table,String menu,String pricemenu) throws IOException {
 		FileWriter writer = new FileWriter("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\Bill.txt",true);
 		writer.write("\n"+table+" "+menu+" "+pricemenu);
 		writer.close();
 	}
 	
-	
-	
-	
-	
-	public FileWriterAndRead() throws IOException {
-		super();
-		// TODO Auto-generated constructor stub
+	public void WriteFileMenu(String nameMenu,int price) throws IOException {
+		File file = new File("/JAVA-OOP-Project/data/Menu.txt");
+		if(file.exists() == false) {
+			FileWriter writer = new FileWriter("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\Menu.txt",true);
+			writer.write(nameMenu+" "+price+"\n");
+			writer.close();
+		}
 	}
-
 
 	public String getTable() {
 		return table;
