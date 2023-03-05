@@ -109,6 +109,7 @@ public class UITable extends UI_select_table{
 		frame.getContentPane().add(lblNewLabel_1_1_2);
 		
 		name = new JTextField();
+		name.setFont(new Font("RSU",Font.PLAIN,16));
 		name.setBounds(210, 137, 389, 31);
 		frame.getContentPane().add(name);
 		name.setText(namestr);
@@ -149,7 +150,7 @@ public class UITable extends UI_select_table{
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource() == btnNewButton) {
 					if(t_start.getSelectedIndex() >= t_end.getSelectedIndex()) {
-						JOptionPane.showMessageDialog(null,"กรุณาเลือกเวลาเริ่มจองโต๊ะก่อนเวลาเลิกจอง","Invalid Time",JOptionPane.OK_OPTION);
+						JOptionPane.showMessageDialog(null,"กรุณาเลือกเวลาเริ่มจองโต๊ะก่อนเวลาเลิกจอง","Invalid Time",JOptionPane.WARNING_MESSAGE);
 					}else {
 					frame.dispose();
 					System.out.println(button);
@@ -167,6 +168,7 @@ public class UITable extends UI_select_table{
 		frame.getContentPane().add(btnNewButton);
 		
 		selected_table = new JTextField(button);
+		selected_table.setEditable(false);
 		selected_table.setBounds(210, 419, 115, 24);
 		frame.getContentPane().add(selected_table);
 		selected_table.setColumns(10);
@@ -174,8 +176,20 @@ public class UITable extends UI_select_table{
 		JButton save = new JButton("บันทึกผล");
 		save.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int confirm = JOptionPane.showConfirmDialog(null, "save?","Confirm", JOptionPane.YES_NO_OPTION);
+				if(name.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "กรุณากรอกชื่อ","Fill Form",JOptionPane.OK_OPTION);
+				}else if(phone.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "กรุณากรอกเบอร์โทรศัพท์","Fill Form",JOptionPane.OK_OPTION);
+				}else if(!phone.getText().matches("[0-9]+")) {
+					JOptionPane.showMessageDialog(null, "กรุณากรอกเบอร์โทรศัพท์เป็นตัวเลข","Fill Form",JOptionPane.OK_OPTION);
+				}else if(t_start.getSelectedIndex() == 0 || t_end.getSelectedIndex() == 0){
+					JOptionPane.showMessageDialog(null, "กรุณาเลือกเวลาจอง","Fill Form",JOptionPane.OK_OPTION);
+				}else if(selected_table.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "กรุณาเลือกโต๊ะที่จะทำการจอง","Fill Form",JOptionPane.OK_OPTION);			
+				}				else {
+				int confirm = JOptionPane.showConfirmDialog(null, "ต้องการบันทึกข้อมูลหรือไม่?","Confirm", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(null, "บันทึกเสร็จสิ้น", "Success!", JOptionPane.PLAIN_MESSAGE);
 				try {
 					Booking bk = new Booking(name.getText(), phone.getText(), selected_table.getText() ,(String)t_start.getSelectedItem(), (String)t_end.getSelectedItem());
 					bk.writeFile();
@@ -192,6 +206,7 @@ public class UITable extends UI_select_table{
 				}else {
 					JOptionPane.showMessageDialog(null, "ยกเลิกการบันทึก", "Save cancel", JOptionPane.PLAIN_MESSAGE);
 				}
+			}
 			}
 		});
 		save.setFont(new Font("Tahoma", Font.PLAIN, 20));
