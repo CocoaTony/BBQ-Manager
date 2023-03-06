@@ -39,7 +39,7 @@ public class UIORDERTEST {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField Menuorder;
+	private JTextField Menuselect;
 
 	/**
 	 * Launch the application.
@@ -106,7 +106,7 @@ public class UIORDERTEST {
 		
 		//**Menu
 		
-		int[] result = new int[] {1};
+		
 		
 		JScrollPane Menu = new JScrollPane();
 		Menu.setBounds(135, 85, 200, 247);
@@ -134,16 +134,19 @@ public class UIORDERTEST {
 		LabelOrderForSoft.setHorizontalAlignment(SwingConstants.CENTER);
 		OrderForSoft.setColumnHeaderView(LabelOrderForSoft);
 		
-		Menuorder = new JTextField();
-		OrderForSoft.setViewportView(Menuorder);
-		Menuorder.setEditable(false);;
-		Menuorder.setColumns(10);
+		Menuselect = new JTextField();
+		Menuselect.setFont(new Font("RSU", Font.PLAIN, 13));
+		OrderForSoft.setViewportView(Menuselect);
+		Menuselect.setEditable(false);
+		Menuselect.setColumns(10);;
 		//**Order
 		
 		//จำนวนที่ต้องการ*****
+		int[] result = new int[] {1};
+		
 		
 		JLabel Result = new JLabel(String.valueOf(result[0]));
-		Result.setBounds(204, 342, 45, 13);
+		Result.setBounds(233, 342, 45, 13);
 		frame.getContentPane().add(Result);
 		
 		JButton AddButton = new JButton("เพิ่ม");
@@ -181,20 +184,27 @@ public class UIORDERTEST {
 		Confirm.setFont(new Font("RSU", Font.PLAIN, 11));
 		Confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				LabelOrderForSoft.setText((String)Tablelist.getSelectedValue());
-				FileWriterAndRead fuction02 = new FileWriterAndRead();
-				try {
-					fuction02.setPrice(2, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
-					int[] save = fuction02.getPrice();
-					fuction02.WriteFileMenu((String)Menulist.getSelectedValue(), save[Tablelist.getSelectedIndex()]*result[0]);
-					
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+				if(Tablelist.isSelectionEmpty() || Menulist.isSelectionEmpty()) {
+					JOptionPane.showMessageDialog(null,"Please select all information.","Error",JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					LabelOrderForSoft.setText((String)Tablelist.getSelectedValue());
+					FileWriterAndRead fuction02 = new FileWriterAndRead();
+					try {
+						fuction02.setPrice(2, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
+						int[] save = fuction02.getPrice();
+						fuction02.WriteFileMenu((String)Tablelist.getSelectedValue(),(String)Menulist.getSelectedValue(), save[Menulist.getSelectedIndex()]*result[0]);
+						Menuselect.setText(Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0]));
+						
+						
+					} catch (IOException e1) {
+						
+					}
 				}
 				
 			}
 		});
-		Confirm.setBounds(144, 399, 89, 23);
+		Confirm.setBounds(189, 399, 89, 23);
 		frame.getContentPane().add(Confirm);
 		//จำนวนที่ต้องการ*****
 		

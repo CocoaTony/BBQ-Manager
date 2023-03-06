@@ -47,14 +47,6 @@ public class ReadFile {
 						list[count] = ListForLength[numberCommand - 1];
 					}
 				}
-				
-				//else if(numberCommand == 2) {
-					//if(i==0) {
-						//count += 1;
-						//list[count] = ListForLength[1];
-					//}
-					
-				//}
 			}
 		}
 		scan.close();
