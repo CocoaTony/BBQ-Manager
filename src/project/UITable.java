@@ -160,6 +160,7 @@ public class UITable extends UI_select_table{
 					t_enda = t_end.getSelectedIndex();
 					UI_select_table select = new UI_select_table();
 					select.frame.setVisible(true);
+					
 					}
 				}
 			}
