@@ -15,6 +15,18 @@ public class FileWriterAndRead extends ReadFile {
 		writer.write(table+" "+Menu+" "+price+"\n");
 		writer.close();
 	}
+	
+	public boolean checkWaMeTableMai() {
+		File file = new File("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\Bill.txt");
+		boolean result = true;
+		if(file.length() == 0) {
+			result = true;
+		}else if(file.length() >0) {
+			result = false;
+		}
+		return result;
+	}
+	
 
 	public String getTable() {
 		return table;

@@ -13,16 +13,10 @@ public class ReadFile {
 	//For Size in method getList*****
 	public int count(String location) throws IOException{
 		int count1 = 0 ;
-		int check = 0;
 		Scanner scan = new Scanner(new File(location));
 		while(scan.hasNext()){
 			scan.nextLine();
-			if(check == 0) {
-				check +=1;
-				continue;
-			}else {
-				count1 += 1;
-			}
+			count1 += 1;
 		}
 		scan.close();
 		return count1;
@@ -32,20 +26,14 @@ public class ReadFile {
 	public String[] getList(int numberCommand,String location) throws IOException {
 		Scanner scan = new Scanner(new File(location));
 		int count = -1;
-		int check = 0;
 		String[] list = new String[count(location)];
 		while(scan.hasNext()){
 			String line = scan.nextLine();
 			String[] ListForLength = line.split(" ");
 			for(int i = 0;i<ListForLength.length;i++) {
-				if(check == 0){
-					check += 1;
-					continue;
-				}else {
-					if(i==0) {
-						count += 1;
-						list[count] = ListForLength[numberCommand - 1];
-					}
+				if(i==0) {
+					count += 1;
+					list[count] = ListForLength[numberCommand-1];
 				}
 			}
 		}
