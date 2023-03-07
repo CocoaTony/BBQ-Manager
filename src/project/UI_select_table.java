@@ -46,16 +46,15 @@ public class UI_select_table {
 	
 	
 	public void readTable(String table,JButton id) throws FileNotFoundException {
-		Scanner read = new Scanner(new File(table+".txt"));
-		if(read.hasNext()) {
-			String line = read.nextLine();
-			if(line == ("09:00-10:00")) {
-				id.setVisible(false);
+		Scanner read = new Scanner(table);
+		while(read.hasNext()) {
+			String time = read.nextLine();
+			String[] time_split = time.split("-");
+			for(int i = 0;i < time_split.length ;i++) {
+				int list = time.indexOf(i);
 			}
-			System.out.print(line);
-			
 		}read.close();
-	}
+}
 
 	public void getUITable(String value) {
 		button=value;

@@ -119,7 +119,7 @@ public class UIOrder {
 		frame.setBounds(100, 100,1300 , 850);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ImageIcon white = new ImageIcon("C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\src\\project\\White_full.png");
+		ImageIcon white = new ImageIcon("src\\project\\White_full.png");
 		frame.getContentPane().setLayout(null);
 		
 		//LINE*********

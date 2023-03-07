@@ -6,8 +6,11 @@ import java.awt.JobAttributes;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,11 +46,25 @@ public class UIORDERTEST {
 
 	/**
 	 * Launch the application.
+	 * @return 
+	 * @throws FileNotFoundException 
 	 */
 
 	
 	
-	
+	public static void readtable(String data) throws FileNotFoundException {
+	Scanner kaka = new Scanner(new File(data));
+	try {
+		kaka = new Scanner(new File("data/tableID"));
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	while(kaka.hasNext()) {
+		String line = kaka.nextLine();
+		String[] kuy = new String[] {line};
+	}kaka.close();
+	}
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -81,10 +98,11 @@ public class UIORDERTEST {
 		frame.getContentPane().setLayout(null);
 		//Import FucList
 		FileWriterAndRead fuction = new FileWriterAndRead();
-		fuction.setName(1, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
+		fuction.setName(1, "data\\food.txt");
 		
 		//test list table
-		String[] kuy = new String[] {"Table01","Table02","Table03","Table04","Table05"};
+		File file = new File("data/tableID");
+		String[] kuy = new String[] {"A01","A02","A03"};
 		
 		//**Table
 		JScrollPane scrollPane = new JScrollPane();
@@ -191,7 +209,8 @@ public class UIORDERTEST {
 					LabelOrderForSoft.setText((String)Tablelist.getSelectedValue());
 					FileWriterAndRead fuction02 = new FileWriterAndRead();
 					try {
-						fuction02.setPrice(2, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
+						fuction02.setPrice(2,"data\\food.txt");
+						
 						int[] save = fuction02.getPrice();
 						fuction02.WriteFileMenu((String)Tablelist.getSelectedValue(),(String)Menulist.getSelectedValue(), save[Menulist.getSelectedIndex()]*result[0]);
 						Menuselect.setText(Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0]));

@@ -55,7 +55,7 @@ public class Billcheck {
 		frame.getContentPane().setLayout(null);
 		
 		FileWriterAndRead fuction = new FileWriterAndRead();
-		fuction.setName(1, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\Bill.txt");
+		fuction.setName(1, "data\\Bill.txt");
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
