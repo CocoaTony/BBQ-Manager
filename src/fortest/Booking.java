@@ -72,7 +72,7 @@ public class Booking {
 	public void wf() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("testdata/booking.txt", true);
-		write.append(getNumID()+"\t"+getName()+"\t"+getPhone()+"\t"+getTable()+"\t"+getTime()+"\t"+date.format(new Date())+"\n");
+		write.append(getNumID()+" "+getName()+" "+getPhone()+" "+getTable()+" "+getTime()+" "+date.format(new Date())+" ");
 		write.close();
 	}
 	
