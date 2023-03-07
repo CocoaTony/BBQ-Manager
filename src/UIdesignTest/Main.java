@@ -31,39 +31,13 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
 public class Main   {
-<<<<<<< HEAD
+
 	JFrame frame;
 	public static String button;
-=======
-
-	private JFrame frame;
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
 	
-	
-	
-	public static void addList() {
-		LabelOrder.setText((String)TablecomboBox.getSelectedItem());
-		FileWriterAndRead fuction02 = new FileWriterAndRead();
-		int ccc = 0;
-		fuction02.setPrice(2,"data\\food.txt");	
-		int[] save = fuction02.getPrice();
-		fuction02.WriteFileMenu((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(), save[MenuList.getSelectedIndex()]*result[0]);
-		nonn += (MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
-		menuorder.add(MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
-		for (String i : menuorder) {
-			ccc++;
-		}
-		String[] nnnnn = new String[ccc];
-		for (int i=0; i<nnnnn.length;i++) {
-			nnnnn[i]=menuorder.get(i);
-		}
-		JList orderlist = new JList(nnnnn);
-		scrollPane.setViewportView(orderlist);;
-		orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
-	}
->>>>>>> ab9e6b9181d15008e9717f239979c31d74d92509
 	
 	public Main(String button) {
 		super();
@@ -363,17 +337,59 @@ public class Main   {
 		scrollPane.setViewportView(LabelOrder);
 		scrollPane.setColumnHeaderView(LabelOrder);
 		
+		int[] check = new int[] {0};
+		
 		JButton Addlist = new JButton("เพิ่มรายการ");
 		Addlist.setFont(new Font("RSU", Font.PLAIN, 13));
 		Addlist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int check = TablecomboBox.getSelectedIndex();
+				if(check[0] == TablecomboBox.getSelectedIndex()) {
+					check[0] = TablecomboBox.getSelectedIndex();
+				}
 				try {
-						if(check !=TablecomboBox.getSelectedIndex()){
-							
+					if(check[0] != TablecomboBox.getSelectedIndex()){
+						menuorder.clear();
+						nonn = "";
+						LabelOrder.setText((String)TablecomboBox.getSelectedItem());
+						FileWriterAndRead fuction02 = new FileWriterAndRead();
+						int ccc = 0;
+						fuction02.setPrice(2,"data\\food.txt");	
+						int[] save = fuction02.getPrice();
+						fuction02.WriteFileMenu((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(), save[MenuList.getSelectedIndex()]*result[0]);
+						nonn += (MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
+						menuorder.add(MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
+						for (String i : menuorder) {
+							ccc++;
 						}
-						
-					} catch (IOException e1) {
+						String[] nnnnn = new String[ccc];
+						for (int i=0; i<nnnnn.length;i++) {
+							nnnnn[i]=menuorder.get(i);
+						}
+						JList orderlist = new JList(nnnnn);
+						scrollPane.setViewportView(orderlist);;
+						orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
+						check[0] = TablecomboBox.getSelectedIndex();
+					}else{
+						LabelOrder.setText((String)TablecomboBox.getSelectedItem());
+						FileWriterAndRead fuction02 = new FileWriterAndRead();
+						int ccc = 0;
+						fuction02.setPrice(2,"data\\food.txt");	
+						int[] save = fuction02.getPrice();
+						fuction02.WriteFileMenu((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(), save[MenuList.getSelectedIndex()]*result[0]);
+						nonn += (MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
+						menuorder.add(MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
+						for (String i : menuorder) {
+							ccc++;
+						}
+						String[] nnnnn = new String[ccc];
+						for (int i=0; i<nnnnn.length;i++) {
+							nnnnn[i]=menuorder.get(i);
+						}
+						JList orderlist = new JList(nnnnn);
+						scrollPane.setViewportView(orderlist);;
+						orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
+					}
+				}catch (IOException e1) {
 						
 				}	
 			}
