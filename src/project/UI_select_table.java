@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.awt.event.ActionEvent;
-public class UI_select_table extends Booking{
+public class UI_select_table {
 //	private String namemom;
 //	
 //
@@ -38,11 +38,13 @@ public class UI_select_table extends Booking{
 	 */
 	
 	
-	public UI_select_table(String name, String phone, String table, String time_s, String time_e)
-			throws ParseException {
-		super(name, phone, table, time_s, time_e);
-		// TODO Auto-generated constructor stub
-	}
+//	public UI_select_table(String name, String phone, String table, String time_s, String time_e)
+//			throws ParseException {
+//		super(name, phone, table, time_s, time_e);
+//		// TODO Auto-generated constructor stub
+//	}
+	
+	
 	public void readTable(String table,JButton id) throws FileNotFoundException {
 		Scanner read = new Scanner(new File(table+".txt"));
 		if(read.hasNext()) {
@@ -252,6 +254,10 @@ public class UI_select_table extends Booking{
 		frame.getContentPane().add(table_B06);
 		
 		JButton table_A01_1 = new JButton("A01");
+		table_A01_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		table_A01_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		table_A01_1.setBackground(new Color(192, 192, 192));
 		table_A01_1.setBounds(127, 127, 104, 52);
