@@ -1,12 +1,14 @@
 package UIdesignTest;
 
 import java.io.File;
-
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
 
 import project.Booking;
 
@@ -139,6 +141,25 @@ public class FileWriterAndRead extends ReadFile {
 		write_table.close();
 	}
 	
-	
+	public String[] readTable() {
+		File tb = new File("data/tableID");
+		int i = 0;
+		String[] tbList = tb.list();
+		String[] tbName = new String[tbList.length];
+		for (String s : tbList) {
+			String[] sp = s.split("\\.");
+			tbName[i] = sp[0];
+			i++;
+		}
+		return tbName;
+	}
+	public Object[] readF(String fileName) throws FileNotFoundException {
+		Scanner scan = new Scanner(new File("data/tableID/"+fileName+".txt"));
+		ArrayList<String> ct = new ArrayList<>();
+		while (scan.hasNext()) {
+			ct.add(scan.nextLine());
+		}
+		return ct.toArray();
+	}
 	
 }

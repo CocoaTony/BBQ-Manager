@@ -14,10 +14,25 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import project.UI_select_table;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import javax.swing.SpringLayout;
+import net.miginfocom.swing.MigLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
+import javax.swing.BoxLayout;
 
 public class SelectTable{
 	JFrame frame;
@@ -43,15 +58,17 @@ public class SelectTable{
 
 	/**
 	 * Create the application.
+	 * @throws FileNotFoundException 
 	 */
-	public SelectTable() {
+	public SelectTable() throws FileNotFoundException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws FileNotFoundException 
 	 */
-	private void initialize() {
+	private void initialize() throws FileNotFoundException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,13 +78,31 @@ public class SelectTable{
 		panel.setBackground(new Color(227, 188, 134));
 		panel.setBounds(0, 0, 183, 553);
 		frame.getContentPane().add(panel);
-		panel.setLayout(null);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		JLabel lblNewLabel = new JLabel(Main.getButton());
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 28));
-		lblNewLabel.setBounds(51, 10, 64, 48);
 		panel.add(lblNewLabel);
+		
+		
+		FileWriterAndRead tb = new FileWriterAndRead();
+		String[] tbID = tb.readTable();
+		
+		for (String s : tbID) {
+			int x = 0;
+			JLabel jl = new JLabel(s);
+			panel.add(jl);
+			
+			Object[] r = tb.readF(s);
+			for (Object t : r) {
+				JLabel time = new JLabel((String) t);
+				panel.add(time);
+			}
+			
+		}
+		
+//		JLabel tb_ = new JLabel("New label");
+//		panel.add(tb_);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(248, 208, 169));
