@@ -9,17 +9,20 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import project.UI_select_table;
 
 public class SelectTable{
 	JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField nameBK;
+	private JTextField phoneBK;
 	
 	
 	/**
@@ -73,11 +76,11 @@ public class SelectTable{
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Angsana New", Font.PLAIN, 16));
-		textField.setBounds(114, 71, 239, 34);
-		panel_1.add(textField);
-		textField.setColumns(10);
+		nameBK = new JTextField();
+		nameBK.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		nameBK.setBounds(114, 71, 239, 34);
+		panel_1.add(nameBK);
+		nameBK.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("ชื่อผู้จอง:");
 		lblNewLabel_1.setFont(new Font("Angsana New", Font.PLAIN, 30));
@@ -91,17 +94,17 @@ public class SelectTable{
 		lblNewLabel_1_1.setBounds(23, 129, 81, 34);
 		panel_1.add(lblNewLabel_1_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Angsana New", Font.PLAIN, 16));
-		textField_1.setColumns(10);
-		textField_1.setBounds(114, 129, 239, 34);
-		panel_1.add(textField_1);
+		phoneBK = new JTextField();
+		phoneBK.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		phoneBK.setColumns(10);
+		phoneBK.setBounds(114, 129, 239, 34);
+		panel_1.add(phoneBK);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลา", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00", "22.00"}));
-		comboBox.setFont(new Font("Angsana New", Font.PLAIN, 16));
-		comboBox.setBounds(114, 204, 81, 34);
-		panel_1.add(comboBox);
+		JComboBox timeS = new JComboBox();
+		timeS.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลา", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
+		timeS.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		timeS.setBounds(114, 204, 81, 34);
+		panel_1.add(timeS);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("เวลา:");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -115,15 +118,49 @@ public class SelectTable{
 		lblNewLabel_1_1_1_1.setBounds(205, 204, 51, 34);
 		panel_1.add(lblNewLabel_1_1_1_1);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลา", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00", "15.00", "16.00", "17.00", "18.00", "19.00", "20.00", "21.00", "22.00"}));
-		comboBox_1.setFont(new Font("Angsana New", Font.PLAIN, 16));
-		comboBox_1.setBounds(272, 204, 81, 34);
-		panel_1.add(comboBox_1);
+		JComboBox timeE = new JComboBox();
+		timeE.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลา", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
+		timeE.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		timeE.setBounds(272, 204, 81, 34);
+		panel_1.add(timeE);
 		
 		JButton btnNewButton = new JButton("บันทึก");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(nameBK.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "กรุณากรอกชื่อ","Fill Form",JOptionPane.OK_OPTION);
+				}else if(phoneBK.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "กรุณากรอกเบอร์โทรศัพท์","Fill Form",JOptionPane.OK_OPTION);
+				}else if(!phoneBK.getText().matches("[0-9]+")) {
+					JOptionPane.showMessageDialog(null, "กรุณากรอกเบอร์โทรศัพท์เป็นตัวเลข","Fill Form",JOptionPane.OK_OPTION);
+				}else if(timeS.getSelectedIndex() == 0 || timeE.getSelectedIndex() == 0){
+					JOptionPane.showMessageDialog(null, "กรุณาเลือกเวลาจอง","Fill Form",JOptionPane.OK_OPTION);
+				}else if(Main.getButton().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "กรุณาเลือกโต๊ะที่จะทำการจอง","Fill Form",JOptionPane.OK_OPTION);			
+				}				else {
+				int confirm = JOptionPane.showConfirmDialog(null, "ต้องการบันทึกข้อมูลหรือไม่?","Confirm", JOptionPane.YES_NO_OPTION);
+				if(confirm == JOptionPane.YES_OPTION) {
+					JOptionPane.showMessageDialog(null, "บันทึกเสร็จสิ้น", "Success!", JOptionPane.PLAIN_MESSAGE);
+					FileWriterAndRead bk = new FileWriterAndRead();
+					bk.setNumID();
+					bk.setTableID(Main.getButton());
+					bk.setNameBK(nameBK.getText());
+					bk.setPhone(phoneBK.getText());
+					try {
+						bk.setTime_s((String)timeS.getSelectedItem());
+						bk.setTime_e((String)timeE.getSelectedItem());
+						bk.wfbk();
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				}
+				
 				frame.dispose();
 			}
 		});
