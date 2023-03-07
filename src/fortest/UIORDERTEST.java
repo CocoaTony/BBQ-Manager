@@ -81,7 +81,7 @@ public class UIORDERTEST {
 		frame.getContentPane().setLayout(null);
 		//Import FucList
 		FileWriterAndRead fuction = new FileWriterAndRead();
-		fuction.setName(1, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
+		fuction.setName(1, "data\\food.txt");
 		
 		//test list table
 		String[] kuy = new String[] {"Table01","Table02","Table03","Table04","Table05"};
@@ -191,7 +191,7 @@ public class UIORDERTEST {
 					LabelOrderForSoft.setText((String)Tablelist.getSelectedValue());
 					FileWriterAndRead fuction02 = new FileWriterAndRead();
 					try {
-						fuction02.setPrice(2, "C:\\Users\\Peerapon\\Documents\\GitHub\\JAVA-OOP-Project\\data\\food.txt");
+						fuction02.setPrice(2, "data\\food.txt");
 						int[] save = fuction02.getPrice();
 						fuction02.WriteFileMenu((String)Tablelist.getSelectedValue(),(String)Menulist.getSelectedValue(), save[Menulist.getSelectedIndex()]*result[0]);
 						Menuselect.setText(Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0]));

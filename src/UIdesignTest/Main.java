@@ -9,11 +9,14 @@ import java.awt.FlowLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.text.LayeredHighlighter.LayerPainter;
+
+import fortest.FileWriterAndRead;
 
 import java.awt.CardLayout;
 import javax.swing.JLayeredPane;
@@ -23,14 +26,15 @@ import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
 
-public class Main {
+public class Main   {
 
 	private JFrame frame;
-
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,14 +50,14 @@ public class Main {
 	/**
 	 * Create the application.
 	 */
-	public Main() {
+	public Main() throws IOException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,23 +99,37 @@ public class Main {
 		
 			//Order
 		
+		FileWriterAndRead fuction = new FileWriterAndRead();
+		fuction.setName(1, "data\\food.txt");
+		
 		
 		JPanel Orderpanel = new JPanel();
 		Orderpanel.setBackground(Color.WHITE);
 		layeredPane.add(Orderpanel, "name_346664563806300");
 		Orderpanel.setLayout(null);
 		
-		//String[] table = new String[] {"ad","bd","cd","dd","ed","fd","gd","kd","ld","nd"};
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel());
-		comboBox.setBounds(83, 25, 195, 22);
-		Orderpanel.add(comboBox);
+		String[] table = new String[] {"Table01","Table02","Table03","Table04","Table05"};
+		JComboBox TablecomboBox = new JComboBox(table);
+		TablecomboBox.setModel(new DefaultComboBoxModel());
+		TablecomboBox.setBounds(83, 25, 195, 22);
+		Orderpanel.add(TablecomboBox);
 		
 		JLabel TableText = new JLabel("โตํะ");
 		TableText.setHorizontalAlignment(SwingConstants.CENTER);
 		TableText.setFont(new Font("RSU", Font.PLAIN, 13));
 		TableText.setBounds(27, 29, 46, 14);
 		Orderpanel.add(TableText);
+		
+		JComboBox MenuList = new JComboBox();
+		MenuList.setBounds(377, 26, 195, 22);
+		Orderpanel.add(MenuList);
+		
+		JLabel FoodMenuText = new JLabel("ชุด");
+		FoodMenuText.setHorizontalAlignment(SwingConstants.CENTER);
+		FoodMenuText.setFont(new Font("RSU", Font.PLAIN, 13));
+		FoodMenuText.setBounds(321, 30, 46, 14);
+		Orderpanel.add(FoodMenuText);
+		
 		
 		
 		
