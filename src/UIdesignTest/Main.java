@@ -17,7 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.text.LayeredHighlighter.LayerPainter;
 
 import fortest.FileWriterAndRead;
-
+import project.UITable;
+import project.UI_select_table;
 import java.awt.CardLayout;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
@@ -27,9 +28,35 @@ import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
 
 public class Main   {
-
-	private JFrame frame;
+	JFrame frame;
+	public static String button;
 	
+	public Main(String button) {
+		super();
+		this.button = button;
+	}
+	
+	
+	
+	
+	public static String getButton() {
+		return button;
+	}
+
+
+
+
+	public  void setButton(String button) {
+		this.button = button;
+	}
+	public void TableSelected(String button) {
+		setButton(button);
+		SelectTable Table = new SelectTable();
+		Table.frame.setVisible(true);
+	}
+
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -94,8 +121,95 @@ public class Main   {
 		JPanel CheckBillpanel = new JPanel();
 		layeredPane.add(CheckBillpanel, "name_346658630833800");
 		
+		
+		
+		///tableSelected///
+		
 		JPanel Tablepanel = new JPanel();
+		Tablepanel.setBackground(new Color(102, 118, 92));
 		layeredPane.add(Tablepanel, "name_346662239729800");
+		Tablepanel.setLayout(null);
+		
+		JButton btnNewButton = new JButton("A01");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A01");
+				}
+		});
+		btnNewButton.setBounds(70, 50, 75, 75);
+		Tablepanel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("A02");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A02");
+			}
+		});
+		btnNewButton_1.setBounds(215, 50, 75, 75);
+		Tablepanel.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("A03");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A03");
+			}
+		});
+		btnNewButton_2.setBounds(375, 50, 75, 75);
+		Tablepanel.add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("A04");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A04");
+			}
+		});
+		btnNewButton_3.setBounds(520, 50, 75, 75);
+		Tablepanel.add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("A05");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A05");
+			}
+		});
+		btnNewButton_4.setBounds(70, 195, 75, 75);
+		Tablepanel.add(btnNewButton_4);
+		
+		JButton btnNewButton_1_1 = new JButton("A06");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A06");
+			}
+		});
+		btnNewButton_1_1.setBounds(215, 195, 75, 75);
+		Tablepanel.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_2_1 = new JButton("A07");
+		btnNewButton_2_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A07");
+			}
+		});
+		btnNewButton_2_1.setBounds(375, 195, 75, 75);
+		Tablepanel.add(btnNewButton_2_1);
+		
+		JButton btnNewButton_3_1 = new JButton("A08");
+		btnNewButton_3_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("A08");
+			}
+		});
+		btnNewButton_3_1.setBounds(520, 195, 75, 75);
+		Tablepanel.add(btnNewButton_3_1);
+		
+		JButton btnNewButton_4_1 = new JButton("B01");
+		btnNewButton_4_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TableSelected("B01");
+			}
+		});
+		btnNewButton_4_1.setBounds(70, 340, 75, 75);
+		Tablepanel.add(btnNewButton_4_1);
 		
 			//Order
 		
