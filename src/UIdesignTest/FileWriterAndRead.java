@@ -122,18 +122,19 @@ public class FileWriterAndRead extends ReadFile {
 		Date t1 = date.parse(time_e);
 		this.time_e = date.format(t1);
 	}
-	public void writeFile() throws IOException {
-		File table = new File("data/tableID");
-		if(!table.exists()){
-			table.mkdirs();
+	public void BKFile() throws IOException {
+//		Filewri table = new File("data/tableID", true);
+		File tb = new File("data/tableID");
+		if(!tb.exists()){
+			tb.mkdirs();
 		}
 	}
 	public void wfbk() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("data/booking.txt", true);
 		write.append(getNumID()+" "+getNameBK()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
-		FileWriter write_table = new FileWriter("data/tableID/"+getTableID()+".txt");
-		write_table.append(getTime_s()+"-"+getTime_e());
+		FileWriter write_table = new FileWriter("data/tableID/"+getTableID()+".txt", true);
+		write_table.append(getTime_s()+"-"+getTime_e()+"\n");
 		write.close();
 		write_table.close();
 	}

@@ -150,6 +150,7 @@ public class SelectTable{
 					try {
 						bk.setTime_s((String)timeS.getSelectedItem());
 						bk.setTime_e((String)timeE.getSelectedItem());
+						bk.BKFile();
 						bk.wfbk();
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
