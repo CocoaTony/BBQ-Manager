@@ -310,6 +310,20 @@ public class UIOrder {
 		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.setBounds(680, 616, 91, 41);
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton Backbutton = new JButton("Go back");
+		Backbutton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == Backbutton) {
+					frame.dispose();
+					
+					UI MainUI = new UI();
+					MainUI.frame.setVisible(true);
+				}
+			}
+		});
+		Backbutton.setBounds(10, 11, 102, 31);
+		frame.getContentPane().add(Backbutton);
 		btnNewButton.addActionListener(new ActionListener() {
 			Enumeration<AbstractButton> food = buttonGroup.getElements();
 			@Override
