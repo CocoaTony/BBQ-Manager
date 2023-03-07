@@ -10,6 +10,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -23,13 +24,46 @@ import java.awt.CardLayout;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 
 public class Main   {
+<<<<<<< HEAD
 	JFrame frame;
 	public static String button;
+=======
+
+	private JFrame frame;
+	private JTextField Result;
+	private ArrayList<String> menuorder = new ArrayList();
+	private String nonn = "";
+	
+	
+	
+	public static void addList() {
+		LabelOrder.setText((String)TablecomboBox.getSelectedItem());
+		FileWriterAndRead fuction02 = new FileWriterAndRead();
+		int ccc = 0;
+		fuction02.setPrice(2,"data\\food.txt");	
+		int[] save = fuction02.getPrice();
+		fuction02.WriteFileMenu((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(), save[MenuList.getSelectedIndex()]*result[0]);
+		nonn += (MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
+		menuorder.add(MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
+		for (String i : menuorder) {
+			ccc++;
+		}
+		String[] nnnnn = new String[ccc];
+		for (int i=0; i<nnnnn.length;i++) {
+			nnnnn[i]=menuorder.get(i);
+		}
+		JList orderlist = new JList(nnnnn);
+		scrollPane.setViewportView(orderlist);;
+		orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
+	}
+>>>>>>> ab9e6b9181d15008e9717f239979c31d74d92509
 	
 	public Main(String button) {
 		super();
@@ -95,15 +129,6 @@ public class Main   {
 		bg.setBounds(0, 0, 884, 561);
 		frame.getContentPane().add(bg);
 		bg.setLayout(null);
-		
-		
-		//Menu panel***
-		
-		JPanel Menupanel = new JPanel();
-		Menupanel.setBackground(new Color(255, 205, 138));
-		Menupanel.setBounds(0, 0, 208, 561);
-		bg.add(Menupanel);
-		Menupanel.setLayout(null);
 		
 		//Menu panel***
 		
@@ -213,18 +238,17 @@ public class Main   {
 		
 			//Order
 		
-		FileWriterAndRead fuction = new FileWriterAndRead();
-		fuction.setName(1, "data\\food.txt");
-		
-		
+		FileWriterAndRead fuc01 = new FileWriterAndRead();
+	
 		JPanel Orderpanel = new JPanel();
 		Orderpanel.setBackground(Color.WHITE);
 		layeredPane.add(Orderpanel, "name_346664563806300");
 		Orderpanel.setLayout(null);
-		
-		String[] table = new String[] {"Table01","Table02","Table03","Table04","Table05"};
-		JComboBox TablecomboBox = new JComboBox(table);
-		TablecomboBox.setModel(new DefaultComboBoxModel());
+	
+		String[] table = fuc01.getList(4,"data/booking.txt");
+		JComboBox TablecomboBox = new JComboBox();
+		TablecomboBox.setFont(new Font("RSU", Font.PLAIN, 14));
+		TablecomboBox.setModel(new DefaultComboBoxModel(table));
 		TablecomboBox.setBounds(83, 25, 195, 22);
 		Orderpanel.add(TablecomboBox);
 		
@@ -234,7 +258,10 @@ public class Main   {
 		TableText.setBounds(27, 29, 46, 14);
 		Orderpanel.add(TableText);
 		
+		String[]Menu = fuc01.getList(1, "data/food.txt");
 		JComboBox MenuList = new JComboBox();
+		MenuList.setFont(new Font("RSU", Font.PLAIN, 14));
+		MenuList.setModel(new DefaultComboBoxModel(Menu));
 		MenuList.setBounds(377, 26, 195, 22);
 		Orderpanel.add(MenuList);
 		
@@ -244,11 +271,136 @@ public class Main   {
 		FoodMenuText.setBounds(321, 30, 46, 14);
 		Orderpanel.add(FoodMenuText);
 		
+			//**Panel + -
+		JPanel Add_Negetive = new JPanel();
+		Add_Negetive.setBounds(83, 77, 195, 31);
+		Orderpanel.add(Add_Negetive);
+		Add_Negetive.setLayout(null);
+		
+		int[] result = new int[] {1};
+		
+		JButton AddButton = new JButton("เพิ่ม");
+		AddButton.setFont(new Font("RSU", Font.BOLD, 10));
+		AddButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int add_result = result[0]+1;
+				result[0] = add_result;
+				Result.setText(Integer.toString(result[0]));
+			}
+		});
+		AddButton.setBounds(0, 0, 65, 31);
+		Add_Negetive.add(AddButton);
+		
+		JButton NegetiveButton = new JButton("ลด");
+		NegetiveButton.setFont(new Font("RSU", Font.BOLD, 10));
+		NegetiveButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int add_result = result[0]-1;
+				if(add_result <= 0) {
+					result[0] = 1;
+				}else {
+					result[0] = add_result;
+					
+				}
+				Result.setText(Integer.toString(result[0]));
+			}
+		});
+		NegetiveButton.setBounds(130, 0, 65, 31);
+		Add_Negetive.add(NegetiveButton);
+		
+		Result = new JTextField(Integer.toString(result[0]));
+		Result.setHorizontalAlignment(SwingConstants.CENTER);
+		Result.setFont(new Font("RSU", Font.BOLD, 14));
+		Result.setBounds(63, 0, 70, 31);
+		Add_Negetive.add(Result);
+		Result.setEditable(false);
+		Result.setColumns(10);
+		
+		JLabel Humanmuch = new JLabel("คน");
+		Humanmuch.setFont(new Font("RSU", Font.PLAIN, 13));
+		Humanmuch.setHorizontalAlignment(SwingConstants.CENTER);
+		Humanmuch.setBounds(27, 87, 45, 13);
+		Orderpanel.add(Humanmuch);
+		
+		
+		JPanel List = new JPanel();
+		List.setBounds(10, 171, 657, 380);
+		Orderpanel.add(List);
+		List.setLayout(null);
+		
+		JLabel ListText = new JLabel("List");
+		ListText.setBackground(Color.WHITE);
+		ListText.setFont(new Font("RSU", Font.BOLD, 21));
+		ListText.setHorizontalAlignment(SwingConstants.CENTER);
+		ListText.setBounds(278, 0, 111, 45);
+		List.add(ListText);
+		
+		JPanel Line = new JPanel();
+		Line.setBackground(Color.ORANGE);
+		Line.setBounds(0, 0, 657, 45);
+		List.add(Line);
+		
+		JPanel Line2 = new JPanel();
+		Line2.setBackground(Color.ORANGE);
+		Line2.setBounds(0, 43, 10, 337);
+		List.add(Line2);
+		
+		JPanel Line3 = new JPanel();
+		Line3.setBackground(Color.ORANGE);
+		Line3.setBounds(647, 43, 10, 337);
+		List.add(Line3);
+		
+		JPanel Line4 = new JPanel();
+		Line4.setBackground(Color.ORANGE);
+		Line4.setBounds(0, 370, 647, 10);
+		List.add(Line4);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 43, 637, 327);
+		List.add(scrollPane);
+		
+		JLabel LabelOrder = new JLabel("");
+		scrollPane.setViewportView(LabelOrder);
+		scrollPane.setColumnHeaderView(LabelOrder);
+		
+		JButton Addlist = new JButton("เพิ่มรายการ");
+		Addlist.setFont(new Font("RSU", Font.PLAIN, 13));
+		Addlist.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int check = TablecomboBox.getSelectedIndex();
+				try {
+						if(check !=TablecomboBox.getSelectedIndex()){
+							
+						}
+						
+					} catch (IOException e1) {
+						
+				}	
+			}
+		});
+		Addlist.setBounds(301, 129, 85, 21);
+		Orderpanel.add(Addlist);
+		
+		
+			//Panel + -
+		
+		
+		
+		//Menu panel***
+
+		
 		
 		
 		
 			//Order
 		//Content here
+		
+		
+		JPanel Menupanel = new JPanel();
+		Menupanel.setBounds(0, 0, 208, 561);
+		bg.add(Menupanel);
+		Menupanel.setBackground(new Color(255, 205, 138));
+		Menupanel.setLayout(null);
 		
 		
 

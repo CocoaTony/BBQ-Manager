@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -42,7 +43,8 @@ public class UIORDERTEST {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField Menuselect;
+	private ArrayList<String> menuorder = new ArrayList();
+	private String nonn = "";
 
 	/**
 	 * Launch the application.
@@ -98,7 +100,7 @@ public class UIORDERTEST {
 		frame.getContentPane().setLayout(null);
 		//Import FucList
 		FileWriterAndRead fuction = new FileWriterAndRead();
-		fuction.setName(1, "data\\food.txt");
+		
 		
 		//test list table
 		File file = new File("data/tableID");
@@ -136,7 +138,7 @@ public class UIORDERTEST {
 		Menu.setColumnHeaderView(MenuText);
 		
 		
-		JList Menulist = new JList(fuction.getName());
+		JList Menulist = new JList(fuction.getList(1, "data\\food.txt"));
 		Menulist.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		Menu.setViewportView(Menulist);
 		
@@ -152,11 +154,7 @@ public class UIORDERTEST {
 		LabelOrderForSoft.setHorizontalAlignment(SwingConstants.CENTER);
 		OrderForSoft.setColumnHeaderView(LabelOrderForSoft);
 		
-		Menuselect = new JTextField();
-		Menuselect.setFont(new Font("RSU", Font.PLAIN, 13));
-		OrderForSoft.setViewportView(Menuselect);
-		Menuselect.setEditable(false);
-		Menuselect.setColumns(10);;
+		
 		//**Order
 		
 		//จำนวนที่ต้องการ*****
@@ -209,13 +207,31 @@ public class UIORDERTEST {
 					LabelOrderForSoft.setText((String)Tablelist.getSelectedValue());
 					FileWriterAndRead fuction02 = new FileWriterAndRead();
 					try {
+						int ccc = 0;
 						fuction02.setPrice(2,"data\\food.txt");
+						
 						
 						int[] save = fuction02.getPrice();
 						fuction02.WriteFileMenu((String)Tablelist.getSelectedValue(),(String)Menulist.getSelectedValue(), save[Menulist.getSelectedIndex()]*result[0]);
-						Menuselect.setText(Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0]));
-						
-						
+						nonn += (Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0])+"\n");
+						menuorder.add(Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0])+"\n");
+//						for (String i : menuorder) {
+//							Menuselect.setText(i);
+//						}
+						for (String i : menuorder) {
+							ccc++;
+						}
+						String[] nnnnn = new String[ccc];
+						for (int i=0; i<nnnnn.length;i++) {
+							nnnnn[i]=menuorder.get(i);
+						}
+	
+			
+//						System.out.println(menuorder);
+//						Menuselect.setText(Menulist.getSelectedValue()+"        "+"x"+Integer.toString(result[0]));
+						JList orderlist = new JList(nnnnn);
+						OrderForSoft.setViewportView(orderlist);;
+						orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
 					} catch (IOException e1) {
 						
 					}
@@ -223,8 +239,15 @@ public class UIORDERTEST {
 				
 			}
 		});
+		
+		
+		
+		
+		
 		Confirm.setBounds(189, 399, 89, 23);
 		frame.getContentPane().add(Confirm);
+		
+		
 		//จำนวนที่ต้องการ*****
 		
 		//ListMenu ที่สั่ง
