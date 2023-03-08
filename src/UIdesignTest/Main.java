@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
@@ -41,8 +42,9 @@ public class Main   {
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
-	
-	
+	UIdesignTest.FileWriterAndRead gg;
+
+
 	
 	public Main(String button) {
 		super();
@@ -82,6 +84,7 @@ public class Main   {
 	                if (selection != null) {
 	                    JOptionPane.showMessageDialog(null, selection, "Selected Item",
 	                            JOptionPane.INFORMATION_MESSAGE);
+	                    System.out.println(gg.readbill());
 	                }
 	            }
 	        }
@@ -557,6 +560,8 @@ public class Main   {
 				layeredPane.add(CheckBillpanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				String[] ggnocap = gg.readbill();
+				
 				
 				
 				
