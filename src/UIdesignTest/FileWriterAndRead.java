@@ -141,7 +141,7 @@ public class FileWriterAndRead extends ReadFile {
 	}
 	
 	public String[] readTable() {
-		File tb = new File("data/tableID");
+		File tb = new File("data/bill");
 		int i = 0;
 		String[] tbList = tb.list();
 		String[] tbName = new String[tbList.length];
@@ -152,6 +152,7 @@ public class FileWriterAndRead extends ReadFile {
 		}
 		return tbName;
 	}
+	
 	public Object[] readF(String fileName) throws FileNotFoundException {
 		Scanner scan = new Scanner(new File("data/tableID/"+fileName+".txt"));
 		ArrayList<String> ct = new ArrayList<>();

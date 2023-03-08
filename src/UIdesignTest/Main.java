@@ -148,7 +148,7 @@ public class Main   {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 0));
-		panel.setBounds(10, 10, 657, 328);
+		panel.setBounds(10, 10, 657, 541);
 		CheckBillpanel.add(panel);
 		panel.setLayout(null);
 		
@@ -161,9 +161,13 @@ public class Main   {
 		TableTextbill.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollPane_1.setColumnHeaderView(TableTextbill);
 		
-		String[] x = new String[] {"A1","A2","B1","B2"};
-		JList list = new JList(x);
+		UIdesignTest.FileWriterAndRead tbcb = new UIdesignTest.FileWriterAndRead();
+		String[] tablecb =  tbcb.readTable();
+//		String[] x = new String[] {"A1","A2","B1","B2"};
+		JList list = new JList(tablecb);
+		String ntb = "";
 		list.addListSelectionListener(new MyListListener()); 
+		
 		scrollPane_1.setViewportView(list);
 		
 		
@@ -553,6 +557,8 @@ public class Main   {
 				layeredPane.add(CheckBillpanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
+				
+				
 				
 			}
 		});
