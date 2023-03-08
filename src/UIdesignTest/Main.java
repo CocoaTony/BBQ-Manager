@@ -186,7 +186,6 @@ public class Main   {
 //		String[] x = new String[] {"A1","A2","B1","B2"};
 		JList list = new JList(tablecb);
 		list.addListSelectionListener(new MyListListener()); 
-		
 		scrollPane_1.setViewportView(list);
 		
 		

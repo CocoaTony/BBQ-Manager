@@ -72,6 +72,7 @@ public class SelectTable{
 	 * @throws FileNotFoundException 
 	 */
 	private void initialize() throws FileNotFoundException {
+		FileWriterAndRead file = new FileWriterAndRead();
 		Font font = new Font("RSU", Font.PLAIN, 16);
 		UIManager.put("OptionPane.messageFont", font);
 		
@@ -90,20 +91,13 @@ public class SelectTable{
 		lblNewLabel.setFont(new Font("RSU", Font.PLAIN, 28));
 		panel.add(lblNewLabel);
 		
+		String[] tbID = file.readTable();
 		
-		FileWriterAndRead tb = new FileWriterAndRead();
-		String[] tbID = tb.readTable();
-		
-		
-		
-		Object[] r = tb.readF(Main.getButton());
+		Object[] r = file.readF(Main.getButton());
 		for (Object t : r) {
 			JLabel time = new JLabel((String) t);
 			panel.add(time);
 		}
-		
-//		JLabel tb_ = new JLabel("New label");
-//		panel.add(tb_);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(248, 208, 169));
