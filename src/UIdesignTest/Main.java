@@ -42,6 +42,7 @@ public class Main   {
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
+	public static String tableCB;
 
 
 	
@@ -80,9 +81,14 @@ public class Main   {
 	            if (!e.getValueIsAdjusting()) {
 	                JList<String> lst = (JList<String>) e.getSource();
 	                String selection = lst.getSelectedValue();
+	                tableCB = lst.getSelectedValue();
 	                if (selection != null) {
-	                    JOptionPane.showMessageDialog(null, selection, "Selected Item",
-	                            JOptionPane.INFORMATION_MESSAGE);
+//	                    JOptionPane.showMessageDialog(null, selection, "Selected Item",
+//	                            JOptionPane.INFORMATION_MESSAGE);
+	                	UIBill ui = new UIBill();
+//	                	tableCB = selection;
+	                	ui.frame.setVisible(true);
+	                	
 	        
 	                }
 	            }
@@ -167,10 +173,11 @@ public class Main   {
 		String[] tablecb =  tbcb.readTable();
 //		String[] x = new String[] {"A1","A2","B1","B2"};
 		JList list = new JList(tablecb);
-		String ntb = "";
 		list.addListSelectionListener(new MyListListener()); 
 		
 		scrollPane_1.setViewportView(list);
+		
+//		tableCB = (String)list.getSelectedValue();
 		
 		
 		

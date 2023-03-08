@@ -154,12 +154,19 @@ public class FileWriterAndRead extends ReadFile {
 	}
 	
 	public Object[] readF(String fileName) throws FileNotFoundException {
-		Scanner scan = new Scanner(new File("data/tableID/"+fileName+".txt"));
+		File file = new File("data/tableID/"+fileName+".txt");
 		ArrayList<String> ct = new ArrayList<>();
-		while (scan.hasNext()) {
-			ct.add(scan.nextLine());
+		if (file.exists()) {
+			Scanner scan = new Scanner(file);
+			
+			while (scan.hasNext()) {
+				ct.add(scan.nextLine());
+			}
+			return ct.toArray();
+		}else {
+			return ct.toArray();
 		}
-		return ct.toArray();
+		
 	}
 	
 	//Order Section

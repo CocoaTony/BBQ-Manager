@@ -3,10 +3,12 @@ package UIdesignTest;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class UIBill {
-
-	private JFrame frame;
+	
+	JFrame frame;
+	
 
 	/**
 	 * Launch the application.
@@ -38,6 +40,13 @@ public class UIBill {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		System.out.println(Main.tableCB);
+		
+		JLabel nameTBCB = new JLabel(Main.tableCB);
+		nameTBCB.setBounds(184, 24, 45, 13);
+		frame.getContentPane().add(nameTBCB);
 	}
 
 }
