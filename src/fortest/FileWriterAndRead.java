@@ -27,6 +27,8 @@ public class FileWriterAndRead extends ReadFile {
 		return result;
 	}
 	
+	public 
+	
 
 	public String getTable() {
 		return table;

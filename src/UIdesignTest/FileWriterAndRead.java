@@ -140,8 +140,8 @@ public class FileWriterAndRead extends ReadFile {
 		write_table.close();
 	}
 	
-	public String[] readTable() {
-		File tb = new File("data/tableID");
+	public String[] readbill() {
+		File tb = new File("data/bill");
 		int i = 0;
 		String[] tbList = tb.list();
 		String[] tbName = new String[tbList.length];
