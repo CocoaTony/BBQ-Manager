@@ -42,7 +42,6 @@ public class Main   {
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
-	UIdesignTest.FileWriterAndRead gg;
 
 
 	
@@ -84,7 +83,7 @@ public class Main   {
 	                if (selection != null) {
 	                    JOptionPane.showMessageDialog(null, selection, "Selected Item",
 	                            JOptionPane.INFORMATION_MESSAGE);
-	                    System.out.println(gg.readbill());
+	        
 	                }
 	            }
 	        }
@@ -560,7 +559,6 @@ public class Main   {
 				layeredPane.add(CheckBillpanel);
 				layeredPane.repaint();
 				layeredPane.revalidate();
-				String[] ggnocap = gg.readbill();
 				
 				
 				
