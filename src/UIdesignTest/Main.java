@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -61,7 +62,7 @@ public class Main   {
 	public  void setButton(String button) {
 		this.button = button;
 	}
-	public void TableSelected(String button) {
+	public void TableSelected(String button) throws FileNotFoundException {
 		setButton(button);
 		SelectTable Table = new SelectTable();
 		Table.frame.setVisible(true);
@@ -180,7 +181,12 @@ public class Main   {
 		JButton btnNewButton = new JButton("A01");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A01");
+				try {
+					TableSelected("A01");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				}
 		});
 		btnNewButton.setBounds(70, 50, 75, 75);
@@ -189,7 +195,12 @@ public class Main   {
 		JButton btnNewButton_1 = new JButton("A02");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A02");
+				try {
+					TableSelected("A02");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_1.setBounds(215, 50, 75, 75);
@@ -198,7 +209,12 @@ public class Main   {
 		JButton btnNewButton_2 = new JButton("A03");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A03");
+				try {
+					TableSelected("A03");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_2.setBounds(375, 50, 75, 75);
@@ -207,7 +223,12 @@ public class Main   {
 		JButton btnNewButton_3 = new JButton("A04");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A04");
+				try {
+					TableSelected("A04");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_3.setBounds(520, 50, 75, 75);
@@ -216,7 +237,12 @@ public class Main   {
 		JButton btnNewButton_4 = new JButton("A05");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A05");
+				try {
+					TableSelected("A05");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_4.setBounds(70, 195, 75, 75);
@@ -225,7 +251,12 @@ public class Main   {
 		JButton btnNewButton_1_1 = new JButton("A06");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A06");
+				try {
+					TableSelected("A06");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_1_1.setBounds(215, 195, 75, 75);
@@ -234,7 +265,12 @@ public class Main   {
 		JButton btnNewButton_2_1 = new JButton("A07");
 		btnNewButton_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A07");
+				try {
+					TableSelected("A07");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_2_1.setBounds(375, 195, 75, 75);
@@ -243,7 +279,12 @@ public class Main   {
 		JButton btnNewButton_3_1 = new JButton("A08");
 		btnNewButton_3_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("A08");
+				try {
+					TableSelected("A08");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_3_1.setBounds(520, 195, 75, 75);
@@ -252,7 +293,12 @@ public class Main   {
 		JButton btnNewButton_4_1 = new JButton("B01");
 		btnNewButton_4_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TableSelected("B01");
+				try {
+					TableSelected("B01");
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton_4_1.setBounds(70, 340, 75, 75);
@@ -442,6 +488,17 @@ public class Main   {
 				}catch (IOException e1) {
 						
 				}	
+				
+				UIdesignTest.FileWriterAndRead od = new UIdesignTest.FileWriterAndRead();
+				try {
+					ReadFile rf = new ReadFile();
+					od.order((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),rf.priceFood((String)MenuList.getSelectedItem()),Result.getText());
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
 			}
 		});
 		Addlist.setBounds(301, 129, 85, 21);
