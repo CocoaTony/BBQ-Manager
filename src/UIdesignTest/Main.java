@@ -42,7 +42,8 @@ public class Main   {
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
-	public static String tableCB;
+	public String[] table;
+	UIdesignTest.FileWriterAndRead gg;
 
 
 	
@@ -182,8 +183,6 @@ public class Main   {
 		list.addListSelectionListener(new MyListListener()); 
 		
 		scrollPane_1.setViewportView(list);
-		
-//		tableCB = (String)list.getSelectedValue();
 		
 		
 		
@@ -334,7 +333,8 @@ public class Main   {
 		layeredPane.add(Orderpanel, "name_346664563806300");
 		Orderpanel.setLayout(null);
 	
-		String[] table = fuc01.getList(4,"data/booking.txt");
+
+		this.table = fuc01.getList(4,"data/booking.txt");
 		JComboBox TablecomboBox = new JComboBox();
 		TablecomboBox.setFont(new Font("RSU", Font.PLAIN, 14));
 		TablecomboBox.setModel(new DefaultComboBoxModel(table));
@@ -557,10 +557,9 @@ public class Main   {
 		Main.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.removeAll();
-				Mainpanel.validate();
 				layeredPane.add(Mainpanel);
 				layeredPane.repaint();
-				layeredPane.revalidate();
+				layeredPane.validate();
 				
 			}
 		});
@@ -574,10 +573,10 @@ public class Main   {
 		Checkbill.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.removeAll();
-				CheckBillpanel.validate();
 				layeredPane.add(CheckBillpanel);
 				layeredPane.repaint();
-				layeredPane.revalidate();
+				layeredPane.validate();
+				
 				
 				
 			}
@@ -592,10 +591,10 @@ public class Main   {
 		Table.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.removeAll();
-				Tablepanel.validate();
 				layeredPane.add(Tablepanel);
 				layeredPane.repaint();
-				layeredPane.revalidate();
+				layeredPane.validate();
+				
 				
 			}
 		});
@@ -609,10 +608,17 @@ public class Main   {
 		order.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.removeAll();
-				Orderpanel.validate();
+				try {
+					table = fuc01.getList(4,"data/booking.txt");
+					TablecomboBox.setModel(new DefaultComboBoxModel(table));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				layeredPane.add(Orderpanel);
 				layeredPane.repaint();
-				layeredPane.revalidate();
+				layeredPane.validate();
+				Orderpanel.validate();
 			}
 		});
 		order.setBackground(Color.ORANGE);
