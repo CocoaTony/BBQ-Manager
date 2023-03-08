@@ -6,8 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class UIBill {
-
-	private JFrame frame;
+	
+	JFrame frame;
+	
 
 	/**
 	 * Launch the application.
@@ -41,16 +42,10 @@ public class UIBill {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(200, 10, 45, 13);
-		frame.getContentPane().add(lblNewLabel);
+		System.out.println(Main.tableCB);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(23, 42, 193, 374);
-		frame.getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("New label");
-		lblNewLabel_1_1.setBounds(226, 42, 193, 374);
-		frame.getContentPane().add(lblNewLabel_1_1);
+		JLabel nameTBCB = new JLabel(Main.tableCB);
+		nameTBCB.setBounds(184, 24, 45, 13);
+		frame.getContentPane().add(nameTBCB);
 	}
 }
