@@ -72,21 +72,22 @@ public class SelectTable{
 	 * @throws FileNotFoundException 
 	 */
 	private void initialize() throws FileNotFoundException {
+		Font font = new Font("RSU", Font.PLAIN, 16);
+		UIManager.put("OptionPane.messageFont", font);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		Font Thai = new Font("RSU",Font.PLAIN,16);
-		UIManager.put("OptionPane.messageFont", Thai);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(227, 188, 134));
-		panel.setBounds(0, 0, 183, 553);
+		panel.setBounds(0, 0, 161, 553);
 		frame.getContentPane().add(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		JLabel lblNewLabel = new JLabel(Main.getButton());
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 28));
+		lblNewLabel.setFont(new Font("RSU", Font.PLAIN, 28));
 		panel.add(lblNewLabel);
 		
 		
@@ -107,55 +108,55 @@ public class SelectTable{
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(248, 208, 169));
 		panel_1.setForeground(new Color(0, 0, 0));
-		panel_1.setBounds(183, 0, 403, 553);
+		panel_1.setBounds(160, 0, 426, 553);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
 		nameBK = new JTextField();
-		nameBK.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		nameBK.setFont(new Font("RSU", Font.PLAIN, 16));
 		nameBK.setBounds(114, 71, 239, 34);
 		panel_1.add(nameBK);
 		nameBK.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("ชื่อผู้จอง:");
-		lblNewLabel_1.setFont(new Font("Angsana New", Font.PLAIN, 30));
+		lblNewLabel_1.setFont(new Font("RSU", Font.PLAIN, 20));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_1.setBounds(10, 71, 94, 34);
 		panel_1.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("เบอร์โทร:");
 		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_1.setFont(new Font("Angsana New", Font.PLAIN, 30));
+		lblNewLabel_1_1.setFont(new Font("RSU", Font.PLAIN, 20));
 		lblNewLabel_1_1.setBounds(23, 129, 81, 34);
 		panel_1.add(lblNewLabel_1_1);
 		
 		phoneBK = new JTextField();
-		phoneBK.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		phoneBK.setFont(new Font("RSU", Font.PLAIN, 16));
 		phoneBK.setColumns(10);
 		phoneBK.setBounds(114, 129, 239, 34);
 		panel_1.add(phoneBK);
 		
 		JComboBox timeS = new JComboBox();
 		timeS.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลา", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
-		timeS.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		timeS.setFont(new Font("RSU", Font.PLAIN, 16));
 		timeS.setBounds(114, 204, 81, 34);
 		panel_1.add(timeS);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("เวลา:");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_1_1.setFont(new Font("Angsana New", Font.PLAIN, 30));
+		lblNewLabel_1_1_1.setFont(new Font("RSU", Font.PLAIN, 20));
 		lblNewLabel_1_1_1.setBounds(23, 204, 81, 34);
 		panel_1.add(lblNewLabel_1_1_1);
 		
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("ถึง");
 		lblNewLabel_1_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_1_1_1.setFont(new Font("Angsana New", Font.PLAIN, 30));
+		lblNewLabel_1_1_1_1.setFont(new Font("RSU", Font.PLAIN, 20));
 		lblNewLabel_1_1_1_1.setBounds(205, 204, 51, 34);
 		panel_1.add(lblNewLabel_1_1_1_1);
 		
 		JComboBox timeE = new JComboBox();
 		timeE.setModel(new DefaultComboBoxModel(new String[] {"เลือกเวลา", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00"}));
-		timeE.setFont(new Font("Angsana New", Font.PLAIN, 16));
+		timeE.setFont(new Font("RSU", Font.PLAIN, 16));
 		timeE.setBounds(272, 204, 81, 34);
 		panel_1.add(timeE);
 		
@@ -201,7 +202,7 @@ public class SelectTable{
 				}
 			}
 		});
-		btnNewButton.setFont(new Font("Angsana New", Font.PLAIN, 10));
+		btnNewButton.setFont(new Font("RSU", Font.PLAIN, 10));
 		btnNewButton.setBounds(156, 451, 100, 34);
 		panel_1.add(btnNewButton);
 		
@@ -214,7 +215,7 @@ public class SelectTable{
 				}
 			}
 		});
-		Close.setBounds(366, 10, 27, 21);
+		Close.setBounds(312, 10, 81, 21);
 		panel_1.add(Close);
 	}
 }
