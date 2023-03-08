@@ -44,6 +44,7 @@ public class Main   {
 	private String nonn = "";
 	public String[] table;
 	UIdesignTest.FileWriterAndRead gg;
+	public static String tableCB;
 
 
 	
