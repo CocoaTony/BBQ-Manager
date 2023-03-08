@@ -88,17 +88,12 @@ public class SelectTable{
 		FileWriterAndRead tb = new FileWriterAndRead();
 		String[] tbID = tb.readTable();
 		
-		for (String s : tbID) {
-			int x = 0;
-			JLabel jl = new JLabel(s);
-			panel.add(jl);
-			
-			Object[] r = tb.readF(s);
-			for (Object t : r) {
-				JLabel time = new JLabel((String) t);
-				panel.add(time);
-			}
-			
+		
+		
+		Object[] r = tb.readF(Main.getButton());
+		for (Object t : r) {
+			JLabel time = new JLabel((String) t);
+			panel.add(time);
 		}
 		
 //		JLabel tb_ = new JLabel("New label");
