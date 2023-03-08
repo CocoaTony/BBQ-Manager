@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.LayeredHighlighter.LayerPainter;
@@ -132,6 +133,9 @@ public class Main   {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() throws IOException {
+		Font font = new Font("RSU", Font.PLAIN, 16);
+		UIManager.put("OptionPane.messageFont", font);
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
