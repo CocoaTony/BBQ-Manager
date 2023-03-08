@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextPane;
 import java.awt.Font;
 import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UIBill {
 	
@@ -110,6 +113,28 @@ public class UIBill {
 		total.setFont(new Font("RSU", Font.PLAIN, 20));
 		total.setBounds(249, 420, 100, 40);
 		frame.getContentPane().add(total);
+		
+		JButton btnNewButton = new JButton("เสร็จสิ้น");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				file.deleteFilebill(Main.tableCB);
+				frame.dispose();
+				
+			}
+		});
+		btnNewButton.setFont(new Font("RSU", Font.PLAIN, 15));
+		btnNewButton.setBounds(275, 485, 140, 40);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("ย้อนกลับ");
+		btnNewButton_1.setFont(new Font("RSU", Font.PLAIN, 15));
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		btnNewButton_1.setBounds(86, 485, 140, 40);
+		frame.getContentPane().add(btnNewButton_1);
 		
 //		file.priceandcount(Main.tableCB);
 	}

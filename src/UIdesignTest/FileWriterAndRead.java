@@ -262,4 +262,11 @@ public class FileWriterAndRead extends ReadFile {
 		
 	}
 	
+	public void deleteFilebill(String fileName) {
+		File ftb = new File("data/tableID/"+fileName+".txt");
+		ftb.delete();
+		File fbill = new File("data/bill/"+fileName+".txt");
+		fbill.delete();
+	}
+	
 }
