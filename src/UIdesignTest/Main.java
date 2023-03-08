@@ -85,9 +85,15 @@ public class Main   {
 	                if (selection != null) {
 //	                    JOptionPane.showMessageDialog(null, selection, "Selected Item",
 //	                            JOptionPane.INFORMATION_MESSAGE);
-	                	UIBill ui = new UIBill();
-//	                	tableCB = selection;
-	                	ui.frame.setVisible(true);
+	                	UIBill ui;
+						try {
+							ui = new UIBill();
+							ui.frame.setVisible(true);
+						} catch (FileNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+	                	
 	                	
 	        
 	                }
@@ -170,7 +176,7 @@ public class Main   {
 		scrollPane_1.setColumnHeaderView(TableTextbill);
 		
 		UIdesignTest.FileWriterAndRead tbcb = new UIdesignTest.FileWriterAndRead();
-		String[] tablecb =  tbcb.readTable();
+		String[] tablecb =  tbcb.readBill();
 //		String[] x = new String[] {"A1","A2","B1","B2"};
 		JList list = new JList(tablecb);
 		list.addListSelectionListener(new MyListListener()); 

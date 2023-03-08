@@ -152,6 +152,18 @@ public class FileWriterAndRead extends ReadFile {
 		}
 		return tbName;
 	}
+	public String[] readBill() {
+		File tb = new File("data/bill");
+		int i = 0;
+		String[] tbList = tb.list();
+		String[] tbName = new String[tbList.length];
+		for (String s : tbList) {
+			String[] sp = s.split("\\.");
+			tbName[i] = sp[0];
+			i++;
+		}
+		return tbName;
+	}
 	public Object[] readF(String fileName) throws FileNotFoundException {
 		File file = new File("data/tableID/"+fileName+".txt");
 		ArrayList<String> ct = new ArrayList<>();
@@ -179,5 +191,75 @@ public class FileWriterAndRead extends ReadFile {
 		f.close();
 	}
 	
+	
+//Check Bill Section
+	public Object[] billmenu (String fileName) throws FileNotFoundException {
+		ArrayList<String> name = new ArrayList<>();
+//		ArrayList<String> price = new ArrayList<>();
+//		ArrayList<String> count = new ArrayList<>();
+		Scanner scan = new Scanner(new File("data/bill/"+fileName+".txt"));
+		while(scan.hasNext()) {
+			String[] n = scan.nextLine().split("\t");
+			name.add(n[0]);
+//			price.add(n[1]);
+//			count.add(n[2]);
+		}
+		scan.close();
+		return name.toArray();
+		
+		
+	}
+	public Object[] billprice (String fileName) throws FileNotFoundException {
+//		ArrayList<String> name = new ArrayList<>();
+		ArrayList<String> price = new ArrayList<>();
+//		ArrayList<String> count = new ArrayList<>();
+		Scanner scan = new Scanner(new File("data/bill/"+fileName+".txt"));
+		while(scan.hasNext()) {
+			String[] n = scan.nextLine().split("\t");
+//			name.add(n[0]);
+			price.add(n[1]);
+//			count.add(n[2]);
+		}
+		scan.close();
+		return price.toArray();
+		
+		
+	}
+	public Object[] billcount (String fileName) throws FileNotFoundException {
+//		ArrayList<String> name = new ArrayList<>();
+//		ArrayList<String> price = new ArrayList<>();
+		ArrayList<String> count = new ArrayList<>();
+		Scanner scan = new Scanner(new File("data/bill/"+fileName+".txt"));
+		while(scan.hasNext()) {
+			String[] n = scan.nextLine().split("\t");
+//			name.add(n[0]);
+//			price.add(n[1]);
+			count.add(n[2]);
+		}
+		scan.close();
+		return count.toArray();
+		
+		
+	}
+	
+	public int priceandcount (String fileName) throws FileNotFoundException {
+//		ArrayList<String> name = new ArrayList<>();
+//		ArrayList<String> price = new ArrayList<>();
+//		ArrayList<String> count = new ArrayList<>();
+		Scanner scan = new Scanner(new File("data/bill/"+fileName+".txt"));
+		int total = 0;
+		while(scan.hasNext()) {
+			String[] n = scan.nextLine().split("\t");
+//			name.add(n[0]);
+//			price.add(n[1]);
+//			count.add(n[2]);
+			
+			total += Integer.parseInt(n[1]) * Integer.parseInt(n[2]);
+		}
+		scan.close();
+		return total;
+		
+		
+	}
 	
 }
