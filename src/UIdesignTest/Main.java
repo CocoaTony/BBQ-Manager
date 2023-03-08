@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -580,6 +581,9 @@ public class Main   {
 				layeredPane.add(CheckBillpanel);
 				layeredPane.repaint();
 				layeredPane.validate();
+		
+				
+				
 				
 				
 				
@@ -635,6 +639,24 @@ public class Main   {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 32, 208, 32);
 		Menupanel.add(lblNewLabel);
+		
+		JButton btnNewButton_5 = new JButton("รีเฟรช");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				Main wd;
+				try {
+					wd = new Main();
+					wd.frame.setVisible(true);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_5.setFont(new Font("RSU", Font.PLAIN, 12));
+		btnNewButton_5.setBounds(60, 430, 85, 21);
+		Menupanel.add(btnNewButton_5);
 		
 		
 		
