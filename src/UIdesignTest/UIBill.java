@@ -5,7 +5,10 @@ import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import javax.swing.UIManager;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
@@ -47,6 +50,8 @@ public class UIBill {
 	 */
 	private void initialize() throws FileNotFoundException {
 		FileWriterAndRead file =new FileWriterAndRead();
+		Font font = new Font("RSU", Font.PLAIN, 16);
+		UIManager.put("OptionPane.messageFont", font);
 
 		
 		frame = new JFrame();
@@ -117,8 +122,12 @@ public class UIBill {
 		JButton btnNewButton = new JButton("เสร็จสิ้น");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				file.deleteFilebill(Main.tableCB);
-				frame.dispose();
+				int c = JOptionPane.showConfirmDialog(null, "รายการเสร็จสิ้นแล้วใช่หรือไม่", "ยืนยัน", JOptionPane.OK_CANCEL_OPTION);
+				if (c == JOptionPane.OK_OPTION) {
+					file.deleteFilebill(Main.tableCB);
+					frame.dispose();
+				}
+				
 				
 			}
 		});
