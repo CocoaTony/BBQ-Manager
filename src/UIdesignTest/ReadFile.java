@@ -13,11 +13,16 @@ public class ReadFile {
 
 	//For Size in method getList*****
 	public int count(String location) throws IOException{
+		int check =0;
 		int count1 = 0 ;
 		Scanner scan = new Scanner(new File(location));
 		while(scan.hasNext()){
 			scan.nextLine();
-			count1 += 1;
+			if(check == 0) {
+				check = 1;
+			}else{
+				count1 +=1;
+			}
 		}
 		scan.close();
 		return count1;
@@ -26,15 +31,21 @@ public class ReadFile {
 	//Main Method in FucList_FOOD*****
 	public String[] getList(int numberCommand,String location) throws IOException {
 		Scanner scan = new Scanner(new File(location));
+		int check = 0;
 		int count = -1;
 		String[] list = new String[count(location)];
 		while(scan.hasNext()){
 			String line = scan.nextLine();
 			String[] ListForLength = line.split(" ");
 			for(int i = 0;i<ListForLength.length;i++) {
-				if(i==0) {
-					count += 1;
-					list[count] = ListForLength[numberCommand-1];
+				if(check == 0){
+					check += 1;
+				}
+				else{
+					if(i ==0) {
+						count += 1;
+						list[count] = ListForLength[numberCommand-1];
+					}
 				}
 			}
 		}
