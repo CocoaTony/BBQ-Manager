@@ -38,7 +38,7 @@ public class UIBill {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 470, 507);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -48,5 +48,4 @@ public class UIBill {
 		nameTBCB.setBounds(184, 24, 45, 13);
 		frame.getContentPane().add(nameTBCB);
 	}
-
 }
