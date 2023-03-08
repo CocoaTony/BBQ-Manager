@@ -15,9 +15,12 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.text.LayeredHighlighter.LayerPainter;
 
 import fortest.FileWriterAndRead;
+import fortest.ListListenerDemo.MyListListener;
 import project.UITable;
 import project.UI_select_table;
 import java.awt.CardLayout;
@@ -37,6 +40,7 @@ public class Main   {
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
+	
 	
 	
 	public Main(String button) {
@@ -62,7 +66,25 @@ public class Main   {
 		SelectTable Table = new SelectTable();
 		Table.frame.setVisible(true);
 	}
-
+	
+	public String[] jjj(String[] list) {
+		return list;
+	}
+	
+	
+	 private class MyListListener implements ListSelectionListener{
+	        @Override
+	        public void valueChanged(ListSelectionEvent e) {
+	            if (!e.getValueIsAdjusting()) {
+	                JList<String> lst = (JList<String>) e.getSource();
+	                String selection = lst.getSelectedValue();
+	                if (selection != null) {
+	                    JOptionPane.showMessageDialog(null, selection, "Selected Item",
+	                            JOptionPane.INFORMATION_MESSAGE);
+	                }
+	            }
+	        }
+	    }
 
 
 	/**
@@ -116,10 +138,36 @@ public class Main   {
 		JPanel Mainpanel = new JPanel();
 		Mainpanel.setBackground(Color.WHITE);
 		layeredPane.add(Mainpanel, "name_347667449376200");
+		//Checkbill
+		
 		
 		JPanel CheckBillpanel = new JPanel();
 		layeredPane.add(CheckBillpanel, "name_346658630833800");
+		CheckBillpanel.setLayout(null);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 0));
+		panel.setBounds(10, 10, 657, 328);
+		CheckBillpanel.add(panel);
+		panel.setLayout(null);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(10, 10, 200, 308);
+		panel.add(scrollPane_1);
+		
+		JLabel TableTextbill = new JLabel("Table");
+		TableTextbill.setFont(new Font("RSU", Font.BOLD, 19));
+		TableTextbill.setHorizontalAlignment(SwingConstants.CENTER);
+		scrollPane_1.setColumnHeaderView(TableTextbill);
+		
+		String[] x = new String[] {"A1","A2","B1","B2"};
+		JList list = new JList(x);
+		list.addListSelectionListener(new MyListListener()); 
+		scrollPane_1.setViewportView(list);
+		
+		
+		
+		//Checkbill
 		
 		
 		///tableSelected///
@@ -209,6 +257,8 @@ public class Main   {
 		});
 		btnNewButton_4_1.setBounds(70, 340, 75, 75);
 		Tablepanel.add(btnNewButton_4_1);
+			//Tableseleced**
+		
 		
 			//Order
 		
