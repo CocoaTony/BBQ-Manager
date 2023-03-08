@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
@@ -75,6 +76,8 @@ public class SelectTable{
 		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		Font Thai = new Font("RSU",Font.PLAIN,16);
+		UIManager.put("OptionPane.messageFont", Thai);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(227, 188, 134));
@@ -169,8 +172,10 @@ public class SelectTable{
 				}else if(timeS.getSelectedIndex() == 0 || timeE.getSelectedIndex() == 0){
 					JOptionPane.showMessageDialog(null, "กรุณาเลือกเวลาจอง","Fill Form",JOptionPane.OK_OPTION);
 				}else if(Main.getButton().isEmpty()) {
-					JOptionPane.showMessageDialog(null, "กรุณาเลือกโต๊ะที่จะทำการจอง","Fill Form",JOptionPane.OK_OPTION);			
-				}				else {
+					JOptionPane.showMessageDialog(null, "กรุณาเลือกโต๊ะที่จะทำการจอง","Fill Form",JOptionPane.OK_OPTION);
+				}else if(timeS.getSelectedIndex() >= timeE.getSelectedIndex()){
+					JOptionPane.showMessageDialog(null, "กรุณาเลือกเวลาเริ่มจองก่อนเวลาเลิกจอง","Fill Form",JOptionPane.OK_OPTION);
+			}else {
 				int confirm = JOptionPane.showConfirmDialog(null, "ต้องการบันทึกข้อมูลหรือไม่?","Confirm", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
 					JOptionPane.showMessageDialog(null, "บันทึกเสร็จสิ้น", "Success!", JOptionPane.PLAIN_MESSAGE);
@@ -179,6 +184,7 @@ public class SelectTable{
 					bk.setTableID(Main.getButton());
 					bk.setNameBK(nameBK.getText());
 					bk.setPhone(phoneBK.getText());
+					frame.dispose();
 					try {
 						bk.setTime_s((String)timeS.getSelectedItem());
 						bk.setTime_e((String)timeE.getSelectedItem());
@@ -193,12 +199,22 @@ public class SelectTable{
 					}
 				}
 				}
-				
-				frame.dispose();
 			}
 		});
 		btnNewButton.setFont(new Font("Angsana New", Font.PLAIN, 10));
 		btnNewButton.setBounds(156, 451, 100, 34);
 		panel_1.add(btnNewButton);
+		
+		JButton Close = new JButton("Close");
+		Close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e1) {
+				if(e1.getSource() == Close) {
+					frame.dispose();
+					
+				}
+			}
+		});
+		Close.setBounds(366, 10, 27, 21);
+		panel_1.add(Close);
 	}
 }
