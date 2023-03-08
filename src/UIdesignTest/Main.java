@@ -438,6 +438,17 @@ public class Main   {
 				}catch (IOException e1) {
 						
 				}	
+				
+				UIdesignTest.FileWriterAndRead od = new UIdesignTest.FileWriterAndRead();
+				try {
+					ReadFile rf = new ReadFile();
+					od.order((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),rf.priceFood((String)MenuList.getSelectedItem()),Result.getText());
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
 			}
 		});
 		Addlist.setBounds(301, 129, 85, 21);

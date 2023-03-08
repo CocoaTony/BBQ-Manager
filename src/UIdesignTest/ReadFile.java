@@ -1,6 +1,7 @@
 package UIdesignTest;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -72,7 +73,18 @@ public class ReadFile {
 	}
 	
 	
-	
+	public String priceFood(String menuName) throws FileNotFoundException {
+		Scanner scan = new Scanner(new File("data/food.txt"));
+		String price = "";
+		while (scan.hasNext()) {
+			String[] mn = scan.nextLine().split(" ");
+			if (menuName.equals(mn[0])) {
+				price = mn[1];
+			}
+			
+		}
+		return price;
+	}
 	
 	
 

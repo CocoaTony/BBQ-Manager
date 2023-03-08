@@ -54,6 +54,11 @@ public class FileWriterAndRead extends ReadFile {
 	public void setPricemenu(String pricemenu) {
 		this.pricemenu = pricemenu;
 	}
+
+	public void order(String button) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

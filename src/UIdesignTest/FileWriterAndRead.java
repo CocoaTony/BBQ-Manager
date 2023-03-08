@@ -125,7 +125,6 @@ public class FileWriterAndRead extends ReadFile {
 		this.time_e = date.format(t1);
 	}
 	public void BKFile() throws IOException {
-//		Filewri table = new File("data/tableID", true);
 		File tb = new File("data/tableID");
 		if(!tb.exists()){
 			tb.mkdirs();
@@ -161,5 +160,17 @@ public class FileWriterAndRead extends ReadFile {
 		}
 		return ct.toArray();
 	}
+	
+	//Order Section
+	public void order(String table, String menu, String price, String count) throws IOException {
+		File dir = new File("data/bill");
+		if (dir.exists()) {
+			dir.mkdir();
+		}
+		FileWriter f = new FileWriter("data/bill/"+table+".txt",true);
+		f.append(menu+"\t"+price+"\t"+count+"\n");
+		f.close();
+	}
+	
 	
 }
