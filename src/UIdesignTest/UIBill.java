@@ -60,8 +60,6 @@ public class UIBill {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-//		System.out.println(Main.tableCB);
-		
 		JLabel nameTBCB = new JLabel("โต๊ะ "+Main.tableCB);
 		nameTBCB.setFont(new Font("RSU", Font.PLAIN, 16));
 		nameTBCB.setBounds(184, 24, 94, 13);
@@ -145,6 +143,5 @@ public class UIBill {
 		btnNewButton_1.setBounds(86, 485, 140, 40);
 		frame.getContentPane().add(btnNewButton_1);
 		
-//		file.priceandcount(Main.tableCB);
 	}
 }
