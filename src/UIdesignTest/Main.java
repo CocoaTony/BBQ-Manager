@@ -168,7 +168,7 @@ public class Main   {
 		CheckBillpanel.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 0));
+		panel.setBackground(new Color(255, 255, 224));
 		panel.setBounds(10, 10, 657, 328);
 		CheckBillpanel.add(panel);
 		panel.setLayout(null);
@@ -178,6 +178,7 @@ public class Main   {
 		panel.add(scrollPane_1);
 		
 		JLabel TableTextbill = new JLabel("Table");
+		TableTextbill.setBackground(new Color(255, 255, 224));
 		TableTextbill.setFont(new Font("RSU", Font.BOLD, 19));
 		TableTextbill.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollPane_1.setColumnHeaderView(TableTextbill);
@@ -197,7 +198,7 @@ public class Main   {
 		///tableSelected///
 		
 		JPanel Tablepanel = new JPanel();
-		Tablepanel.setBackground(new Color(102, 118, 92));
+		Tablepanel.setBackground(new Color(250, 250, 210));
 		layeredPane.add(Tablepanel, "name_346662239729800");
 		Tablepanel.setLayout(null);
 		
@@ -550,7 +551,7 @@ public class Main   {
 		JPanel Menupanel = new JPanel();
 		Menupanel.setBounds(0, 0, 208, 561);
 		bg.add(Menupanel);
-		Menupanel.setBackground(new Color(255, 205, 138));
+		Menupanel.setBackground(new Color(222, 184, 135));
 		Menupanel.setLayout(null);
 		
 		
@@ -558,7 +559,7 @@ public class Main   {
 		
 		JButton Main = new JButton("หน้าหลัก");
 		Main.setFont(new Font("RSU", Font.BOLD, 20));
-		Main.setBackground(Color.ORANGE);
+		Main.setBackground(new Color(238, 232, 170));
 		Main.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.removeAll();
@@ -589,7 +590,7 @@ public class Main   {
 				
 			}
 		});
-		Checkbill.setBackground(Color.ORANGE);
+		Checkbill.setBackground(new Color(238, 232, 170));
 		Checkbill.setBounds(0, 188, 208, 52);
 		Menupanel.add(Checkbill);
 		
@@ -606,7 +607,7 @@ public class Main   {
 				
 			}
 		});
-		Table.setBackground(Color.ORANGE);
+		Table.setBackground(new Color(238, 232, 170));
 		Table.setBounds(0, 240, 208, 52);
 		Menupanel.add(Table);
 		
@@ -629,7 +630,7 @@ public class Main   {
 				Orderpanel.validate();
 			}
 		});
-		order.setBackground(Color.ORANGE);
+		order.setBackground(new Color(238, 232, 170));
 		order.setBounds(0, 291, 208, 52);
 		Menupanel.add(order);
 		
