@@ -100,7 +100,7 @@ public class SelectTable{
 		}
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(248, 208, 169));
+		panel_1.setBackground(new Color(255, 255, 224));
 		panel_1.setForeground(new Color(0, 0, 0));
 		panel_1.setBounds(160, 0, 426, 553);
 		frame.getContentPane().add(panel_1);
