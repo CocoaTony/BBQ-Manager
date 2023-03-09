@@ -60,7 +60,7 @@ public class ReadFile {
 		int[] LISTisINT = new int[count(location)];
 		for(int i = 0;i<List.length;i++) {
 			String Index = List[i];
-			LISTisINT[i] =  Integer.parseInt(Index);
+			LISTisINT[i] = Integer.parseInt(Index);
 		}
 		return LISTisINT;
 	}

@@ -24,7 +24,6 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.text.LayeredHighlighter.LayerPainter;
 
 import fortest.FileWriterAndRead;
-import fortest.ListListenerDemo.MyListListener;
 import project.UITable;
 import project.UI_select_table;
 import java.awt.CardLayout;
@@ -36,6 +35,7 @@ import javax.swing.JComboBox;
 import java.awt.GridLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 public class Main   {
 
@@ -352,7 +352,7 @@ public class Main   {
 		TableText.setBounds(27, 29, 46, 14);
 		Orderpanel.add(TableText);
 		
-		String[]Menu = fuc01.getList(1, "data/food.txt");
+		String[]Menu = fuc01.getList(1,"data/food.txt");
 		JComboBox MenuList = new JComboBox();
 		MenuList.setFont(new Font("RSU", Font.PLAIN, 14));
 		MenuList.setModel(new DefaultComboBoxModel(Menu));
@@ -453,84 +453,42 @@ public class Main   {
 		scrollPane.setBounds(10, 43, 637, 327);
 		List.add(scrollPane);
 		
-		if(table.length == 0) {
-			System.out.println("kuy");
-		}else {
-			JLabel LabelOrder = new JLabel("");
-			scrollPane.setViewportView(LabelOrder);
-			scrollPane.setColumnHeaderView(LabelOrder);
-			
-			int[] check = new int[] {0};
-			
-			JButton Addlist = new JButton("เพิ่มรายการ");
-			Addlist.setFont(new Font("RSU", Font.PLAIN, 13));
-			Addlist.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if(check[0] == TablecomboBox.getSelectedIndex()) {
-						check[0] = TablecomboBox.getSelectedIndex();
-					}
-					try {
-						if(check[0] != TablecomboBox.getSelectedIndex()){
-							menuorder.clear();
-							nonn = "";
-							LabelOrder.setText((String)TablecomboBox.getSelectedItem());
-							FileWriterAndRead fuction02 = new FileWriterAndRead();
-							int ccc = 0;
-							fuction02.setPrice(2,"data\\food.txt");	
-							int[] save = fuction02.getPrice();
-							fuction02.WriteFileMenu((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(), save[MenuList.getSelectedIndex()]*result[0]);
-							nonn += (MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
-							menuorder.add(MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
-							for (String i : menuorder) {
-								ccc++;
+		JLabel Labelorder = new JLabel("");
+		Labelorder.setFont(new Font("RSU", Font.BOLD, 15));
+		Labelorder.setHorizontalAlignment(SwingConstants.CENTER);
+		scrollPane.setColumnHeaderView(Labelorder);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setFont(new Font("RSU", Font.BOLD, 16));
+		scrollPane.setViewportView(textPane);
+		textPane.setEditable(false);
+		
+		JButton Addlist = new JButton("เพิ่มรายการ");
+		Addlist.setFont(new Font("RSU", Font.PLAIN, 13));
+		Addlist.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()==Addlist) {
+					if(table.length == 0) {
+						JOptionPane.showMessageDialog(null, "Plase add table","Waring", JOptionPane.WARNING_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "Order add!!");
+						Labelorder.setText((String) TablecomboBox.getSelectedItem());
+						textPane.setText("\t\t\t"+(String)MenuList.getSelectedItem()+"\t\t"+"x"+result[0]+"\t\t\t");
+						UIdesignTest.FileWriterAndRead od = new UIdesignTest.FileWriterAndRead();
+						try {
+							ReadFile rf = new ReadFile();
+							od.order((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),rf.priceFood((String)MenuList.getSelectedItem()),Result.getText());
+							} catch (IOException e1) {
+								e1.printStackTrace();
 							}
-							String[] nnnnn = new String[ccc];
-							for (int i=0; i<nnnnn.length;i++) {
-								nnnnn[i]=menuorder.get(i);
-							}
-							JList orderlist = new JList(nnnnn);
-							scrollPane.setViewportView(orderlist);;
-							orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
-							check[0] = TablecomboBox.getSelectedIndex();
-						}else{
-							LabelOrder.setText((String)TablecomboBox.getSelectedItem());
-							FileWriterAndRead fuction02 = new FileWriterAndRead();
-							int ccc = 0;
-							fuction02.setPrice(2,"data\\food.txt");	
-							int[] save = fuction02.getPrice();
-							fuction02.WriteFileMenu((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(), save[MenuList.getSelectedIndex()]*result[0]);
-							nonn += (MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
-							menuorder.add(MenuList.getSelectedItem()+"        "+"x"+Integer.toString(result[0])+"\n");
-							for (String i : menuorder) {
-								ccc++;
-							}
-							String[] nnnnn = new String[ccc];
-							for (int i=0; i<nnnnn.length;i++) {
-								nnnnn[i]=menuorder.get(i);
-							}
-							JList orderlist = new JList(nnnnn);
-							scrollPane.setViewportView(orderlist);;
-							orderlist.setFont(new Font("RSU", Font.PLAIN, 10));
 						}
-					}catch (IOException e1) {
-							
-					}	
-					
-					UIdesignTest.FileWriterAndRead od = new UIdesignTest.FileWriterAndRead();
-					try {
-						ReadFile rf = new ReadFile();
-						od.order((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),rf.priceFood((String)MenuList.getSelectedItem()),Result.getText());
-						
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					}
-				
 				}
+
 			});
 			Addlist.setBounds(301, 129, 85, 21);
 			Orderpanel.add(Addlist);
-		}
+
 		
 		
 			//Panel + -
@@ -620,7 +578,6 @@ public class Main   {
 					table = fuc01.getList(4,"data/booking.txt");
 					TablecomboBox.setModel(new DefaultComboBoxModel(table));
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				layeredPane.add(Orderpanel);
@@ -649,7 +606,6 @@ public class Main   {
 					wd = new Main();
 					wd.frame.setVisible(true);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

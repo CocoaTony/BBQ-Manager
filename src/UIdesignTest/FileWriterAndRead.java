@@ -29,13 +29,13 @@ public class FileWriterAndRead extends ReadFile {
 	
 	
 	public void WriteFileMenu(String table,String Menu,int price) throws IOException {
-		FileWriter writer = new FileWriter("data\\Bill.txt",true);
+		FileWriter writer = new FileWriter("data/Bill.txt",true);
 		writer.write(table+" "+Menu+" "+price+"\n");
 		writer.close();
 	}
 	
 	public boolean checkWaMeTableMai() {
-		File file = new File("data\\Bill.txt");
+		File file = new File("data/Bill.txt");
 		boolean result = true;
 		if(file.length() == 0) {
 			result = true;
