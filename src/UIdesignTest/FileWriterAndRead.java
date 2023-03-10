@@ -133,11 +133,14 @@ public class FileWriterAndRead extends ReadFile {
 	public void wfbk() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("data/booking.txt", true);
+		FileWriter write02 = new FileWriter("data/booking2.txt",true);
 		write.append(getNumID()+" "+getNameBK()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
+		write02.append(getNumID()+" "+getNameBK()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
 		FileWriter write_table = new FileWriter("data/tableID/"+getTableID()+".txt", true);
 		write_table.append(getTime_s()+"-"+getTime_e()+"\n");
 		write.close();
 		write_table.close();
+		write02.close();
 	}
 	
 	public String[] readTable() {
@@ -242,6 +245,10 @@ public class FileWriterAndRead extends ReadFile {
 		
 	}
 	
+	
+	
+	
+	
 	public int priceandcount (String fileName) throws FileNotFoundException {
 //		ArrayList<String> name = new ArrayList<>();
 //		ArrayList<String> price = new ArrayList<>();
@@ -267,6 +274,55 @@ public class FileWriterAndRead extends ReadFile {
 		ftb.delete();
 		File fbill = new File("data/bill/"+fileName+".txt");
 		fbill.delete();
+	}
+	
+	
+	public void deleteFilebooking02(int index) throws IOException {
+		Scanner scan = new Scanner(new File("data/booking2.txt"));
+		int count = 0;
+		ArrayList<String> a = new ArrayList<String>();
+		ArrayList<String> b = new ArrayList<String>();
+		ArrayList<String> c = new ArrayList<String>();
+		ArrayList<String> d = new ArrayList<String>();
+		ArrayList<String> f = new ArrayList<String>();
+		ArrayList<String> g = new ArrayList<String>();
+		while(scan.hasNext()) {
+			String line = scan.nextLine();
+			String[] group = line.split(" ");
+			for(int i =0;i<1;i++) {
+				a.add(group[i]);
+				b.add(group[i+1]);
+				c.add(group[i+2]);
+				d.add(group[i+3]);
+				f.add(group[i+4]);
+				g.add(group[i+5]);
+			}
+		}
+		scan.close();
+		a.remove(index);
+		b.remove(index);
+		c.remove(index);
+		d.remove(index);
+		f.remove(index);
+		g.remove(index);
+		
+		try {
+			FileWriter writer = new FileWriter("data/booking2.txt");
+			for(int i = 0;i<a.size();i++) {
+				System.out.println(i);
+				writer.write(a.get(i)+" ");
+				writer.write(b.get(i)+" ");
+				writer.write(c.get(i)+" ");
+				writer.write(d.get(i)+" ");
+				writer.write(f.get(i)+" ");
+				writer.write(g.get(i)+"\n");
+			}
+			writer.close();
+		}catch (FileNotFoundException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
 	}
 	
 }
