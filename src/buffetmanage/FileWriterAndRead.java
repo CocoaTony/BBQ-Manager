@@ -1,4 +1,4 @@
-package UIdesignTest;
+package buffetmanage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -269,8 +269,8 @@ public class FileWriterAndRead extends ReadFile {
 	}
 	
 	public void deleteFilebill(String fileName) {
-		File ftb = new File("data/tableID/"+fileName+".txt");
-		ftb.delete();
+//		File ftb = new File("data/tableID/"+fileName+".txt");
+//		ftb.delete();
 		File fbill = new File("data/bill/"+fileName+".txt");
 		fbill.delete();
 	}
@@ -321,6 +321,39 @@ public class FileWriterAndRead extends ReadFile {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void checkDir() throws IOException {
+		File data = new File("data");
+		File bill = new File("data/bill");
+		File table = new File("data/tableID");
+		
+		if (!data.exists()) {
+			data.mkdir();
+			new FileWriter("data/booking2.txt", true).append("no "+"name "+"phone "+"table "+"timeselect "+"date "+"time"+"\n").close();
+		}
+		if (!bill.exists()) {
+			bill.mkdir();
+		}
+		if (!table.exists()) {
+			table.mkdir();
+		}
+	}
+	
+	public void pricetotal(String t) throws IOException {
+		FileWriter file = new FileWriter("data/total.txt",true);
+		file.append(t);
+		file.close();
+	}
+	
+	public void closeStore() {
+		 File tb = new File("data/tableID");
+		 String[]fileList = tb.list();
+		 for (String string : fileList) {
+			new File("data/tableID/"+string).delete();
+		}
+		 new File("data/booking.txt").delete();
+		 new File("data/total.txt").delete();
 	}
 	
 }
