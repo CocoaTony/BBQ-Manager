@@ -30,28 +30,33 @@ public class ReadFile {
 	
 	//Main Method in FucList_FOOD*****
 	public String[] getList(int numberCommand,String location) throws IOException {
-		Scanner scan = new Scanner(new File(location));
-		int check = 0;
-		int count = -1;
-		String[] list = new String[count(location)];
-		while(scan.hasNext()){
-			String line = scan.nextLine();
-			String[] ListForLength = line.split(" ");
-			for(int i = 0;i<ListForLength.length;i++) {
-				if(check == 0){
-					check += 1;
-				}
-				else{
-					if(i ==0) {
-						count += 1;
-						list[count] = ListForLength[numberCommand-1];
+		File file = new File(location);
+		if(file.exists() == false) {
+			String[] list = new String[] {};
+			return list ;
+		}else {
+			Scanner scan = new Scanner(new File(location));
+			int check = 0;
+			int count = -1;
+			String[] list = new String[count(location)];
+			while(scan.hasNext()){
+				String line = scan.nextLine();
+				String[] ListForLength = line.split(" ");
+				for(int i = 0;i<ListForLength.length;i++) {
+					if(check == 0){
+						check += 1;
+					}
+					else{
+						if(i ==0) {
+							count += 1;
+							list[count] = ListForLength[numberCommand-1];
+						}
 					}
 				}
 			}
+			scan.close();
+			return list;
 		}
-		scan.close();
-		return list;
-		
 	}
 	
 	//*String[] to Int[]
