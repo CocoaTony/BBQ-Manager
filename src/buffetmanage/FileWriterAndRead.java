@@ -1,4 +1,4 @@
-package UIdesignTest;
+package buffetmanage;
 
 import java.io.File;
 import java.io.FileNotFoundException;

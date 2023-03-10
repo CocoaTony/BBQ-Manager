@@ -1,7 +1,8 @@
-package UIdesignTest;
+package buffetmanage;
 
 import java.awt.EventQueue;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -124,6 +125,14 @@ public class UIBill {
 				if (c == JOptionPane.OK_OPTION) {
 					file.deleteFilebill(Main.tableCB);
 					frame.dispose();
+					Main.frame.dispose();
+					Main wd;
+					try {
+						wd = new Main();
+						wd.frame.setVisible(true);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 				
 				

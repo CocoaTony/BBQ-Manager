@@ -1,4 +1,4 @@
-package UIdesignTest;
+package buffetmanage;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -189,6 +189,14 @@ public class SelectTable{
 						e1.printStackTrace();
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					Main.frame.dispose();
+					Main wd;
+					try {
+						wd = new Main();
+						wd.frame.setVisible(true);
+					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 				}

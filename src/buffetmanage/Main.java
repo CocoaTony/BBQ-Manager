@@ -1,4 +1,4 @@
-package UIdesignTest;
+package buffetmanage;
 
 import java.awt.EventQueue;
 
@@ -36,13 +36,13 @@ import javax.swing.JTextPane;
 
 public class Main   {
 
-	JFrame frame;
+	static JFrame frame;
 	public static String button;
 	private JTextField Result;
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
 	public String[] table;
-	UIdesignTest.FileWriterAndRead gg;
+	buffetmanage.FileWriterAndRead gg;
 	public static String tableCB;
 
 
@@ -180,7 +180,7 @@ public class Main   {
 		TableTextbill.setHorizontalAlignment(SwingConstants.CENTER);
 		scrollPane_1.setColumnHeaderView(TableTextbill);
 		
-		UIdesignTest.FileWriterAndRead tbcb = new UIdesignTest.FileWriterAndRead();
+		buffetmanage.FileWriterAndRead tbcb = new buffetmanage.FileWriterAndRead();
 		String[] tablecb =  tbcb.readBill();
 //		String[] x = new String[] {"A1","A2","B1","B2"};
 		JList list = new JList(tablecb);
@@ -347,7 +347,7 @@ public class Main   {
 		
 			//Order
 		
-		UIdesignTest.FileWriterAndRead fuc01 = new UIdesignTest.FileWriterAndRead();
+		buffetmanage.FileWriterAndRead fuc01 = new buffetmanage.FileWriterAndRead();
 	
 		JPanel Orderpanel = new JPanel();
 		Orderpanel.setBackground(Color.WHITE);
@@ -491,7 +491,7 @@ public class Main   {
 						JOptionPane.showMessageDialog(null, "Order add!!");
 						Labelorder.setText((String) TablecomboBox.getSelectedItem());
 						textPane.setText("\t\t\t"+(String)MenuList.getSelectedItem()+"\t\t"+"x"+result[0]+"\t\t\t");
-						UIdesignTest.FileWriterAndRead od = new UIdesignTest.FileWriterAndRead();
+						buffetmanage.FileWriterAndRead od = new buffetmanage.FileWriterAndRead();
 						try {
 							ReadFile rf = new ReadFile();
 							od.order((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),rf.priceFood((String)MenuList.getSelectedItem()),Result.getText());
