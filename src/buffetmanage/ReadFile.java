@@ -90,7 +90,7 @@ public class ReadFile {
 	
 	
 	public String priceFood(String menuName) throws FileNotFoundException {
-		Scanner scan = new Scanner(new File("data/food.txt"));
+		Scanner scan = new Scanner(new File("food.txt"));
 		String price = "";
 		while (scan.hasNext()) {
 			String[] mn = scan.nextLine().split(" ");

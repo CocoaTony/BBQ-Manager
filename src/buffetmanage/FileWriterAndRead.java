@@ -269,8 +269,8 @@ public class FileWriterAndRead extends ReadFile {
 	}
 	
 	public void deleteFilebill(String fileName) {
-		File ftb = new File("data/tableID/"+fileName+".txt");
-		ftb.delete();
+//		File ftb = new File("data/tableID/"+fileName+".txt");
+//		ftb.delete();
 		File fbill = new File("data/bill/"+fileName+".txt");
 		fbill.delete();
 	}
@@ -321,6 +321,23 @@ public class FileWriterAndRead extends ReadFile {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void checkDir() throws IOException {
+		File data = new File("data");
+		File bill = new File("data/bill");
+		File table = new File("data/tableID");
+		
+		if (!data.exists()) {
+			data.mkdir();
+			new FileWriter("data/booking2.txt", true).append("no "+"name "+"phone "+"table "+"timeselect "+"date "+"time"+"\n").close();
+		}
+		if (!bill.exists()) {
+			bill.mkdir();
+		}
+		if (!table.exists()) {
+			table.mkdir();
+		}
 	}
 	
 }

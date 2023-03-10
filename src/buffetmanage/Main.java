@@ -111,6 +111,8 @@ public class Main   {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					FileWriterAndRead file = new FileWriterAndRead();
+					file.checkDir();
 					Main window = new Main();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -356,7 +358,6 @@ public class Main   {
 	
 
 		this.table = fuc01.getList(4,"data/booking2.txt");
-		System.out.println(table.length);
 		JComboBox TablecomboBox = new JComboBox();
 		TablecomboBox.setFont(new Font("RSU", Font.PLAIN, 14));
 		TablecomboBox.setModel(new DefaultComboBoxModel(table));
@@ -369,7 +370,7 @@ public class Main   {
 		TableText.setBounds(27, 29, 46, 14);
 		Orderpanel.add(TableText);
 		
-		String[]Menu = fuc01.getList(1,"data/food.txt");
+		String[]Menu = fuc01.getList(1,"food.txt");
 		JComboBox MenuList = new JComboBox();
 		MenuList.setFont(new Font("RSU", Font.PLAIN, 14));
 		MenuList.setModel(new DefaultComboBoxModel(Menu));
