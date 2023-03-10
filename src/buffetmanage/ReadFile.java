@@ -112,6 +112,7 @@ public class ReadFile {
 			}
 			
 		}
+		scan.close();
 		return total;
 	}
 	

@@ -67,11 +67,13 @@ public class Close {
 		JButton btnNewButton = new JButton("ปิดร้าน");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int c = JOptionPane.showConfirmDialog(null, "ต้องการปิดร้านแล้วใช่ไหม", "ยืนยัน", JOptionPane.OK_CANCEL_OPTION);
 				if (c == JOptionPane.OK_OPTION) {
 					frame.dispose();
 					Main.frame.dispose();
 					file.closeStore();
+
 				}
 			}
 		});
@@ -93,7 +95,7 @@ public class Close {
 		int total = file.totalPrice();
 		String formattedNumber = String.format("%,d", total);
 		JLabel lblNewLabel_3 = new JLabel(formattedNumber);
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel_3.setFont(new Font("RSU", Font.BOLD, 18));
 		lblNewLabel_3.setBounds(166, 91, 134, 29);
 		frame.getContentPane().add(lblNewLabel_3);
 	}
