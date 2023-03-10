@@ -30,9 +30,12 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
+import java.awt.Image;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
 
 public class Main   {
 
@@ -159,6 +162,13 @@ public class Main   {
 		JPanel Mainpanel = new JPanel();
 		Mainpanel.setBackground(Color.WHITE);
 		layeredPane.add(Mainpanel, "name_347667449376200");
+		Mainpanel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		ImageIcon icon = new ImageIcon("src/buffetmanage/Napang.jpg");
+		lblNewLabel_1.setIcon(new ImageIcon(icon.getImage().getScaledInstance(677,561,Image.SCALE_SMOOTH)));
+		lblNewLabel_1.setBounds(10, 5, 657, 546);
+		Mainpanel.add(lblNewLabel_1);
 		//Checkbill
 		
 		
@@ -168,12 +178,12 @@ public class Main   {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 224));
-		panel.setBounds(10, 10, 657, 328);
+		panel.setBounds(10, 10, 657, 541);
 		CheckBillpanel.add(panel);
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 10, 200, 308);
+		scrollPane_1.setBounds(153, 72, 361, 333);
 		panel.add(scrollPane_1);
 		
 		JLabel TableTextbill = new JLabel("Table");
