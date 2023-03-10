@@ -200,6 +200,8 @@ public class Main   {
 		Tablepanel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("A01");
+		btnNewButton.setForeground(new Color(255, 255, 255));
+		btnNewButton.setBackground(new Color(159, 64, 30));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -214,6 +216,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("A02");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(159, 64, 30));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -228,6 +232,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("A03");
+		btnNewButton_2.setForeground(new Color(255, 255, 255));
+		btnNewButton_2.setBackground(new Color(159, 64, 30));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -242,6 +248,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_2);
 		
 		JButton btnNewButton_3 = new JButton("A04");
+		btnNewButton_3.setForeground(new Color(255, 255, 255));
+		btnNewButton_3.setBackground(new Color(159, 64, 30));
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -256,6 +264,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton("A05");
+		btnNewButton_4.setForeground(new Color(255, 255, 255));
+		btnNewButton_4.setBackground(new Color(159, 64, 30));
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -270,6 +280,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_4);
 		
 		JButton btnNewButton_1_1 = new JButton("A06");
+		btnNewButton_1_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1_1.setBackground(new Color(159, 64, 30));
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -284,6 +296,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_2_1 = new JButton("A07");
+		btnNewButton_2_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_2_1.setBackground(new Color(159, 64, 30));
 		btnNewButton_2_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -298,6 +312,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_2_1);
 		
 		JButton btnNewButton_3_1 = new JButton("A08");
+		btnNewButton_3_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_3_1.setBackground(new Color(159, 64, 30));
 		btnNewButton_3_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -312,6 +328,8 @@ public class Main   {
 		Tablepanel.add(btnNewButton_3_1);
 		
 		JButton btnNewButton_4_1 = new JButton("B01");
+		btnNewButton_4_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_4_1.setBackground(new Color(159, 64, 30));
 		btnNewButton_4_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
