@@ -340,4 +340,20 @@ public class FileWriterAndRead extends ReadFile {
 		}
 	}
 	
+	public void pricetotal(String t) throws IOException {
+		FileWriter file = new FileWriter("data/total.txt",true);
+		file.append(t);
+		file.close();
+	}
+	
+	public void closeStore() {
+		 File tb = new File("data/tableID");
+		 String[]fileList = tb.list();
+		 for (String string : fileList) {
+			new File("data/tableID/"+string).delete();
+		}
+		 new File("data/booking.txt").delete();
+		 new File("data/total.txt").delete();
+	}
+	
 }

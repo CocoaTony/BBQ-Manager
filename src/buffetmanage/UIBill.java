@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;
 public class UIBill {
 	
 	JFrame frame;
+	private String nprice = "";
 	
 
 	/**
@@ -81,7 +82,7 @@ public class UIBill {
 		frame.getContentPane().add(textPane);
 		
 		Object[] price = file.billprice(Main.tableCB);
-		String nprice = "";
+		
 		
 		for (Object o : price) {
 			nprice = nprice+o+"\n";
@@ -123,6 +124,12 @@ public class UIBill {
 			public void actionPerformed(ActionEvent e) {
 				int c = JOptionPane.showConfirmDialog(null, "รายการเสร็จสิ้นแล้วใช่หรือไม่", "ยืนยัน", JOptionPane.OK_CANCEL_OPTION);
 				if (c == JOptionPane.OK_OPTION) {
+					try {
+						file.pricetotal(Integer.toString(file.priceandcount(Main.tableCB)));
+					} catch (IOException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
 					file.deleteFilebill(Main.tableCB);
 					frame.dispose();
 					Main.frame.dispose();

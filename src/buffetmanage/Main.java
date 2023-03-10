@@ -639,6 +639,23 @@ public class Main   {
 		btnNewButton_5.setBounds(60, 430, 85, 21);
 		Menupanel.add(btnNewButton_5);
 		
+		JButton btnNewButton_6 = new JButton("ปิดร้าน");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Close c;
+				try {
+					c = new Close();
+					c.frame.setVisible(true);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnNewButton_6.setFont(new Font("RSU", Font.PLAIN, 18));
+		btnNewButton_6.setBounds(46, 511, 121, 40);
+		Menupanel.add(btnNewButton_6);
+		
 		
 		
 

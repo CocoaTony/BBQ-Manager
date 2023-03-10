@@ -102,6 +102,19 @@ public class ReadFile {
 		return price;
 	}
 	
+	public int totalPrice() throws FileNotFoundException {
+		Scanner scan = new Scanner(new File("data/total.txt"));
+		int total = 0;
+		while (scan.hasNext()) {
+			String n = scan.nextLine();
+			if (n != "") {
+				total = total + Integer.parseInt(n);
+			}
+			
+		}
+		return total;
+	}
+	
 	
 
 }
