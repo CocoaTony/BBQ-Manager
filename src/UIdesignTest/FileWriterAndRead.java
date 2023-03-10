@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
-import project.Booking;
 
 public class FileWriterAndRead extends ReadFile {
 	public String table;
@@ -309,7 +308,6 @@ public class FileWriterAndRead extends ReadFile {
 		try {
 			FileWriter writer = new FileWriter("data/booking2.txt");
 			for(int i = 0;i<a.size();i++) {
-				System.out.println(i);
 				writer.write(a.get(i)+" ");
 				writer.write(b.get(i)+" ");
 				writer.write(c.get(i)+" ");

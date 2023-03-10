@@ -23,9 +23,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.LayeredHighlighter.LayerPainter;
 
-import fortest.FileWriterAndRead;
-import project.UITable;
-import project.UI_select_table;
 import java.awt.CardLayout;
 import javax.swing.JLayeredPane;
 import javax.swing.JScrollPane;
