@@ -130,7 +130,7 @@ public class UIBill {
 			}
 		});
 		btnNewButton.setFont(new Font("RSU", Font.PLAIN, 15));
-		btnNewButton.setBounds(275, 485, 140, 40);
+		btnNewButton.setBounds(254, 485, 140, 40);
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("ย้อนกลับ");
@@ -140,7 +140,7 @@ public class UIBill {
 				frame.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(86, 485, 140, 40);
+		btnNewButton_1.setBounds(58, 485, 140, 40);
 		frame.getContentPane().add(btnNewButton_1);
 		
 	}
