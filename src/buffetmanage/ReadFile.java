@@ -59,7 +59,7 @@ public class ReadFile {
 		}
 	}
 	
-	//*String[] to Int[]
+	//Make String[] to Int[]
 	public int[] StringtoInt(int numberCommand,String location) throws IOException {
 		String[] List = getList(numberCommand,location);
 		int[] LISTisINT = new int[count(location)];

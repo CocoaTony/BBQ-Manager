@@ -67,25 +67,25 @@ public class UIBill {
 		nameTBCB.setBounds(184, 24, 94, 13);
 		frame.getContentPane().add(nameTBCB);
 
-		Object[] namemenu = file.billmenu(Main.tableCB);
-		String mn = "";
+		Object[] namemenu = file.showBill(Main.tableCB);
+		String nameMenu = "";
 		
-		for (Object o : namemenu) {
-			mn = mn+o+"\n";
+		for (Object name : namemenu) {
+			nameMenu = nameMenu+name+"\n";
 		}
 		
 		JTextPane textPane = new JTextPane();
 		textPane.setEditable(false);
 		textPane.setFont(new Font("RSU", Font.PLAIN, 16));
-		textPane.setText(mn);
+		textPane.setText(nameMenu);
 		textPane.setBounds(23, 80, 203, 330);
 		frame.getContentPane().add(textPane);
 		
-		Object[] price = file.billprice(Main.tableCB);
+		Object[] price = file.showBillprice(Main.tableCB);
 		
 		
-		for (Object o : price) {
-			nprice = nprice+o+"\n";
+		for (Object add : price) {
+			nprice = nprice+add+"\n";
 		}
 		
 		JTextPane tprice = new JTextPane();
@@ -95,17 +95,17 @@ public class UIBill {
 		tprice.setBounds(261, 80, 72, 330);
 		frame.getContentPane().add(tprice);
 		
-		Object[] c = file.billcount(Main.tableCB);
-		String nc = "";
+		Object[] count = file.countBill(Main.tableCB);
+		String countNumber = "";
 		
-		for (Object o : c) {
-			nc += "x"+o+"\n";
+		for (Object length : count) {
+			countNumber += "x"+length+"\n";
 		}
 		
 		JTextPane ctext = new JTextPane();
 		ctext.setEditable(false);
 		ctext.setFont(new Font("RSU", Font.PLAIN, 15));
-		ctext.setText(nc);
+		ctext.setText(countNumber);
 		ctext.setBounds(380, 80, 50, 330);
 		frame.getContentPane().add(ctext);
 		
@@ -114,29 +114,31 @@ public class UIBill {
 		lblNewLabel.setBounds(162, 433, 64, 13);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel total = new JLabel(Integer.toString(file.priceandcount(Main.tableCB)));
+		JLabel total = new JLabel(Integer.toString(file.totalPrice(Main.tableCB)));
 		total.setFont(new Font("RSU", Font.PLAIN, 20));
 		total.setBounds(249, 420, 100, 40);
 		frame.getContentPane().add(total);
 		
-		JButton btnNewButton = new JButton("เสร็จสิ้น");
+		
+		//Bill check print
+		JButton btnNewButton = new JButton("ปริ้นใบเสร็จ");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int c = JOptionPane.showConfirmDialog(null, "รายการเสร็จสิ้นแล้วใช่หรือไม่", "ยืนยัน", JOptionPane.OK_CANCEL_OPTION);
 				if (c == JOptionPane.OK_OPTION) {
 					try {
-						file.pricetotal(Integer.toString(file.priceandcount(Main.tableCB)));
+						file.pricetotal(Integer.toString(file.totalPrice(Main.tableCB)));
 					} catch (IOException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}
-					file.deleteFilebill(Main.tableCB);
+					file.deleteBillFile(Main.tableCB);
 					frame.dispose();
 					Main.frame.dispose();
-					Main wd;
+					Main window;
 					try {
-						wd = new Main();
-						wd.frame.setVisible(true);
+						window = new Main();
+						window.frame.setVisible(true);
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}

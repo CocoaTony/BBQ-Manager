@@ -26,14 +26,15 @@ public class FileWriterAndRead extends ReadFile {
 	
 	
 	
-	
+	//Write file for menu
 	public void WriteFileMenu(String table,String Menu,int price) throws IOException {
 		FileWriter writer = new FileWriter("data/Bill.txt",true);
 		writer.write(table+" "+Menu+" "+price+"\n");
 		writer.close();
 	}
 	
-	public boolean checkWaMeTableMai() {
+	//Table checking for bill check
+	public boolean checkTable() {
 		File file = new File("data/Bill.txt");
 		boolean result = true;
 		if(file.length() == 0) {
@@ -76,7 +77,7 @@ public class FileWriterAndRead extends ReadFile {
 	
 	
 	//Booking Section
-	public String getNameBK() {
+	public String getNameBook() {
 		return this.nameBK;
 	}
 	public void setNameBK(String name) {
@@ -123,18 +124,23 @@ public class FileWriterAndRead extends ReadFile {
 		Date t1 = date.parse(time_e);
 		this.time_e = date.format(t1);
 	}
-	public void BKFile() throws IOException {
+	
+	
+	//Make table directory by ID
+	public void bookFile() throws IOException {
 		File tb = new File("data/tableID");
 		if(!tb.exists()){
 			tb.mkdirs();
 		}
 	}
-	public void wfbk() throws IOException {
+	
+	//write booking and order file for saving data and make bill order work
+	public void writeBookFile() throws IOException {
 		SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 		FileWriter write = new FileWriter("data/booking.txt", true);
-		FileWriter write02 = new FileWriter("data/booking2.txt",true);
-		write.append(getNumID()+" "+getNameBK()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
-		write02.append(getNumID()+" "+getNameBK()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
+		FileWriter write02 = new FileWriter("data/Order.txt",true);
+		write.append(getNumID()+" "+getNameBook()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
+		write02.append(getNumID()+" "+getNameBook()+" "+getPhone()+" "+getTableID()+" "+getTime_s()+"-"+getTime_e()+" "+date.format(new Date())+"\n");
 		FileWriter write_table = new FileWriter("data/tableID/"+getTableID()+".txt", true);
 		write_table.append(getTime_s()+"-"+getTime_e()+"\n");
 		write.close();
@@ -142,10 +148,11 @@ public class FileWriterAndRead extends ReadFile {
 		write02.close();
 	}
 	
+	//Find table to order food
 	public String[] readTable() {
-		File tb = new File("data/tableID");
+		File table = new File("data/tableID");
 		int i = 0;
-		String[] tbList = tb.list();
+		String[] tbList = table.list();
 		String[] tbName = new String[tbList.length];
 		for (String s : tbList) {
 			String[] sp = s.split("\\.");
@@ -154,10 +161,12 @@ public class FileWriterAndRead extends ReadFile {
 		}
 		return tbName;
 	}
+	
+	//read order to make bill check
 	public String[] readBill() {
-		File tb = new File("data/bill");
+		File table = new File("data/bill");
 		int i = 0;
-		String[] tbList = tb.list();
+		String[] tbList = table.list();
 		String[] tbName = new String[tbList.length];
 		for (String s : tbList) {
 			String[] sp = s.split("\\.");
@@ -166,24 +175,26 @@ public class FileWriterAndRead extends ReadFile {
 		}
 		return tbName;
 	}
-	public Object[] readF(String fileName) throws FileNotFoundException {
+	
+	//Find food to make bill
+	public Object[] readFood(String fileName) throws FileNotFoundException {
 		File file = new File("data/tableID/"+fileName+".txt");
-		ArrayList<String> ct = new ArrayList<>();
+		ArrayList<String> food_List = new ArrayList<>();
 		if (file.exists()) {
 			Scanner scan = new Scanner(file);
 			
 			while (scan.hasNext()) {
-				ct.add(scan.nextLine());
+				food_List.add(scan.nextLine());
 			}
-			return ct.toArray();
+			return food_List.toArray();
 		}else {
-			return ct.toArray();
+			return food_List.toArray();
 		}
 		
 	}
 	
-	//Order Section
-	public void order(String table, String menu, String price, String count) throws IOException {
+	//Write bill file to save order
+	public void writeOrderFile(String table, String menu, String price, String count) throws IOException {
 		File dir = new File("data/bill");
 		if (dir.exists()) {
 			dir.mkdir();
@@ -194,8 +205,8 @@ public class FileWriterAndRead extends ReadFile {
 	}
 	
 	
-//Check Bill Section
-	public Object[] billmenu (String fileName) throws FileNotFoundException {
+	//Print Bill check by file in bill.txt
+	public Object[] showBill (String fileName) throws FileNotFoundException {
 		ArrayList<String> name = new ArrayList<>();
 //		ArrayList<String> price = new ArrayList<>();
 //		ArrayList<String> count = new ArrayList<>();
@@ -211,7 +222,9 @@ public class FileWriterAndRead extends ReadFile {
 		
 		
 	}
-	public Object[] billprice (String fileName) throws FileNotFoundException {
+	
+	//Get price and make it show on bill check
+	public Object[] showBillprice (String fileName) throws FileNotFoundException {
 //		ArrayList<String> name = new ArrayList<>();
 		ArrayList<String> price = new ArrayList<>();
 //		ArrayList<String> count = new ArrayList<>();
@@ -227,7 +240,9 @@ public class FileWriterAndRead extends ReadFile {
 		
 		
 	}
-	public Object[] billcount (String fileName) throws FileNotFoundException {
+	
+	//Count bill to make it show on check bill panel
+	public Object[] countBill (String fileName) throws FileNotFoundException {
 //		ArrayList<String> name = new ArrayList<>();
 //		ArrayList<String> price = new ArrayList<>();
 		ArrayList<String> count = new ArrayList<>();
@@ -247,8 +262,8 @@ public class FileWriterAndRead extends ReadFile {
 	
 	
 	
-	
-	public int priceandcount (String fileName) throws FileNotFoundException {
+	//get price and make total
+	public int totalPrice (String fileName) throws FileNotFoundException {
 //		ArrayList<String> name = new ArrayList<>();
 //		ArrayList<String> price = new ArrayList<>();
 //		ArrayList<String> count = new ArrayList<>();
@@ -268,16 +283,17 @@ public class FileWriterAndRead extends ReadFile {
 		
 	}
 	
-	public void deleteFilebill(String fileName) {
+	//delete bill file after check bills
+	public void deleteBillFile(String fileName) {
 //		File ftb = new File("data/tableID/"+fileName+".txt");
 //		ftb.delete();
 		File fbill = new File("data/bill/"+fileName+".txt");
 		fbill.delete();
 	}
 	
-	
-	public void deleteFilebooking02(int index) throws IOException {
-		Scanner scan = new Scanner(new File("data/booking2.txt"));
+	//delete Order after add food on order panel
+	public void deleteOrderBooking(int index) throws IOException {
+		Scanner scan = new Scanner(new File("data/Order.txt"));
 		int count = 0;
 		ArrayList<String> a = new ArrayList<String>();
 		ArrayList<String> b = new ArrayList<String>();
@@ -306,7 +322,7 @@ public class FileWriterAndRead extends ReadFile {
 		g.remove(index);
 		
 		try {
-			FileWriter writer = new FileWriter("data/booking2.txt");
+			FileWriter writer = new FileWriter("data/Order.txt");
 			for(int i = 0;i<a.size();i++) {
 				writer.write(a.get(i)+" ");
 				writer.write(b.get(i)+" ");
@@ -323,6 +339,7 @@ public class FileWriterAndRead extends ReadFile {
 		
 	}
 	
+	//Check dir and make Order.txt
 	public void checkDir() throws IOException {
 		File data = new File("data");
 		File bill = new File("data/bill");
@@ -330,7 +347,7 @@ public class FileWriterAndRead extends ReadFile {
 		
 		if (!data.exists()) {
 			data.mkdir();
-			new FileWriter("data/booking2.txt", true).append("no "+"name "+"phone "+"table "+"timeselect "+"date "+"time"+"\n").close();
+			new FileWriter("data/Order.txt", true).append("no "+"name "+"phone "+"table "+"timeselect "+"date "+"time"+"\n").close();
 		}
 		if (!bill.exists()) {
 			bill.mkdir();
@@ -340,12 +357,14 @@ public class FileWriterAndRead extends ReadFile {
 		}
 	}
 	
+	//make total
 	public void pricetotal(String t) throws IOException {
 		FileWriter file = new FileWriter("data/total.txt",true);
 		file.append(t);
 		file.close();
 	}
 	
+	//delete file after close store
 	public void closeStore() {
 		 File tb = new File("data/tableID");
 		 String[]fileList = tb.list();
@@ -354,6 +373,12 @@ public class FileWriterAndRead extends ReadFile {
 		}
 		 new File("data/booking.txt").delete();
 		 new File("data/total.txt").delete();
+		 
+		 File bill = new File("data/bill");
+		 String[]billList = bill.list();
+		 for (String string : billList) {
+			 new File("data/bill/"+string).delete();
+		 }
 	}
 	
 }
