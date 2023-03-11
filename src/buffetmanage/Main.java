@@ -45,7 +45,7 @@ public class Main   {
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
 	public String[] table;
-	buffetmanage.FileWriterAndRead gg;
+	public buffetmanage.FileWriterAndRead edit;
 	public static String tableCB;
 	
 	public static String getButton() {
@@ -63,11 +63,7 @@ public class Main   {
 		SelectTable Table = new SelectTable();
 		Table.frame.setVisible(true);
 	}
-	
-	public String[] jjj(String[] list) {
-		return list;
-	}
-	
+		
 	
 	 private class MyListListener implements ListSelectionListener{
 	        @Override

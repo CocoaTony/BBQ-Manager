@@ -33,17 +33,6 @@ public class FileWriterAndRead extends ReadFile {
 		writer.close();
 	}
 	
-	//Table checking for bill check
-	public boolean checkTable() {
-		File file = new File("data/Bill.txt");
-		boolean result = true;
-		if(file.length() == 0) {
-			result = true;
-		}else if(file.length() >0) {
-			result = false;
-		}
-		return result;
-	}
 	
 
 	public String getTable() {
