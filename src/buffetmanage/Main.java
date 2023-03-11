@@ -47,16 +47,6 @@ public class Main   {
 	public String[] table;
 	buffetmanage.FileWriterAndRead gg;
 	public static String tableCB;
-
-
-	
-	public Main(String button) {
-		super();
-		this.button = button;
-	}
-	
-	
-	
 	
 	public static String getButton() {
 		return button;
