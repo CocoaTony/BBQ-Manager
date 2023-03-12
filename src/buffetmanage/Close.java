@@ -78,7 +78,7 @@ public class Close {
 			}
 		});
 		btnNewButton.setFont(new Font("RSU", Font.PLAIN, 16));
-		btnNewButton.setBounds(180, 190, 102, 29);
+		btnNewButton.setBounds(166, 190, 102, 29);
 		frame.getContentPane().add(btnNewButton);
 		
 		JLabel lblNewLabel_1 = new JLabel("ยอดวันนี้");
@@ -98,5 +98,17 @@ public class Close {
 		lblNewLabel_3.setFont(new Font("RSU", Font.BOLD, 18));
 		lblNewLabel_3.setBounds(166, 91, 134, 29);
 		frame.getContentPane().add(lblNewLabel_3);
+		
+		JButton btnNewButton_1 = new JButton("ย้อนกลับ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() == btnNewButton_1) {
+				frame.dispose();
+				}
+			}
+		});
+		btnNewButton_1.setFont(new Font("RSU", Font.PLAIN, 16));
+		btnNewButton_1.setBounds(322, 20, 102, 29);
+		frame.getContentPane().add(btnNewButton_1);
 	}
 }

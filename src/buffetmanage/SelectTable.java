@@ -92,7 +92,7 @@ public class SelectTable{
 		
 		String[] tbID = file.readTable();
 		
-		Object[] r = file.readF(Main.getButton());
+		Object[] r = file.readFood(Main.getButton());
 		for (Object t : r) {
 			JLabel time = new JLabel((String) t);
 			panel.add(time);
@@ -153,6 +153,8 @@ public class SelectTable{
 		timeE.setBounds(272, 204, 81, 34);
 		panel_1.add(timeE);
 		
+		
+		//Booking table page
 		JButton btnNewButton = new JButton("บันทึก");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -173,17 +175,17 @@ public class SelectTable{
 				int confirm = JOptionPane.showConfirmDialog(null, "ต้องการบันทึกข้อมูลหรือไม่?","Confirm", JOptionPane.YES_NO_OPTION);
 				if(confirm == JOptionPane.YES_OPTION) {
 					JOptionPane.showMessageDialog(null, "บันทึกเสร็จสิ้น", "Success!", JOptionPane.PLAIN_MESSAGE);
-					FileWriterAndRead bk = new FileWriterAndRead();
-					bk.setNumID();
-					bk.setTableID(Main.getButton());
-					bk.setNameBK(nameBK.getText());
-					bk.setPhone(phoneBK.getText());
+					FileWriterAndRead book = new FileWriterAndRead();
+					book.setNumID();
+					book.setTableID(Main.getButton());
+					book.setNameBK(nameBK.getText());
+					book.setPhone(phoneBK.getText());
 					frame.dispose();
 					try {
-						bk.setTime_s((String)timeS.getSelectedItem());
-						bk.setTime_e((String)timeE.getSelectedItem());
-						bk.BKFile();
-						bk.wfbk();
+						book.setTime_s((String)timeS.getSelectedItem());
+						book.setTime_e((String)timeE.getSelectedItem());
+						book.bookFile();
+						book.writeBookFile();
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -207,7 +209,8 @@ public class SelectTable{
 		btnNewButton.setBounds(156, 451, 100, 34);
 		panel_1.add(btnNewButton);
 		
-		JButton Close = new JButton("Close");
+		JButton Close = new JButton("ย้อนกลับ");
+		Close.setFont(font);
 		Close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e1) {
 				if(e1.getSource() == Close) {

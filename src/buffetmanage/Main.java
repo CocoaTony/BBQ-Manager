@@ -30,9 +30,12 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import java.awt.GridLayout;
+import java.awt.Image;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
 
 public class Main   {
 
@@ -42,18 +45,8 @@ public class Main   {
 	private ArrayList<String> menuorder = new ArrayList();
 	private String nonn = "";
 	public String[] table;
-	buffetmanage.FileWriterAndRead gg;
+	public buffetmanage.FileWriterAndRead edit;
 	public static String tableCB;
-
-
-	
-	public Main(String button) {
-		super();
-		this.button = button;
-	}
-	
-	
-	
 	
 	public static String getButton() {
 		return button;
@@ -70,11 +63,7 @@ public class Main   {
 		SelectTable Table = new SelectTable();
 		Table.frame.setVisible(true);
 	}
-	
-	public String[] jjj(String[] list) {
-		return list;
-	}
-	
+		
 	
 	 private class MyListListener implements ListSelectionListener{
 	        @Override
@@ -149,7 +138,7 @@ public class Main   {
 		
 		//Menu panel***
 		
-		//Content here
+		/////////////////////////Content here///////////////////////////////
 		
 		JLayeredPane layeredPane = new JLayeredPane();
 		layeredPane.setBounds(207, 0, 677, 561);
@@ -159,7 +148,18 @@ public class Main   {
 		JPanel Mainpanel = new JPanel();
 		Mainpanel.setBackground(Color.WHITE);
 		layeredPane.add(Mainpanel, "name_347667449376200");
-		//Checkbill
+		Mainpanel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		ImageIcon icon = new ImageIcon("src/buffetmanage/Napang.jpg");
+		lblNewLabel_1.setIcon(new ImageIcon(icon.getImage().getScaledInstance(677,561,Image.SCALE_SMOOTH)));
+		lblNewLabel_1.setBounds(10, 5, 657, 546);
+		Mainpanel.add(lblNewLabel_1);
+		
+		/////////////////////////Content here///////////////////////////////
+		
+		
+		/////////////////////////Checkbill/////////////////////////////////
 		
 		
 		JPanel CheckBillpanel = new JPanel();
@@ -168,12 +168,12 @@ public class Main   {
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 224));
-		panel.setBounds(10, 10, 657, 328);
+		panel.setBounds(10, 10, 657, 541);
 		CheckBillpanel.add(panel);
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(10, 10, 200, 308);
+		scrollPane_1.setBounds(153, 72, 361, 333);
 		panel.add(scrollPane_1);
 		
 		JLabel TableTextbill = new JLabel("Table");
@@ -189,12 +189,11 @@ public class Main   {
 		list.addListSelectionListener(new MyListListener()); 
 		scrollPane_1.setViewportView(list);
 		
+		/////////////////////////Checkbill/////////////////////////////////
 		
 		
-		//Checkbill
 		
-		
-		///tableSelected///
+		///////////////////////Tableseleced///////////////////////////////
 		
 		JPanel Tablepanel = new JPanel();
 		Tablepanel.setBackground(new Color(250, 250, 210));
@@ -344,10 +343,13 @@ public class Main   {
 		});
 		btnNewButton_4_1.setBounds(70, 340, 75, 75);
 		Tablepanel.add(btnNewButton_4_1);
-			//Tableseleced**
+		
+		///////////////////////Tableseleced///////////////////////////////
 		
 		
-			//Order
+		
+		
+		////////////////////////////Order////////////////////////////////
 		
 		buffetmanage.FileWriterAndRead fuc01 = new buffetmanage.FileWriterAndRead();
 	
@@ -392,6 +394,7 @@ public class Main   {
 		int[] result = new int[] {1};
 		
 		JButton AddButton = new JButton("เพิ่ม");
+		AddButton.setBackground(Color.GREEN);
 		AddButton.setFont(new Font("RSU", Font.BOLD, 10));
 		AddButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -404,6 +407,7 @@ public class Main   {
 		Add_Negetive.add(AddButton);
 		
 		JButton NegetiveButton = new JButton("ลด");
+		NegetiveButton.setBackground(Color.RED);
 		NegetiveButton.setFont(new Font("RSU", Font.BOLD, 10));
 		NegetiveButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -491,16 +495,16 @@ public class Main   {
 					}else {
 						JOptionPane.showMessageDialog(null, "Order add!!");
 						Labelorder.setText((String) TablecomboBox.getSelectedItem());
-						textPane.setText("\t\t\t"+(String)MenuList.getSelectedItem()+"\t\t"+"x"+result[0]+"\t\t\t");
-						buffetmanage.FileWriterAndRead od = new buffetmanage.FileWriterAndRead();
+						textPane.setText("\t\t\t"+(String)MenuList.getSelectedItem()+"\t\t"+"x"+result[0]+"   คน\t\t\t");
+						buffetmanage.FileWriterAndRead order = new buffetmanage.FileWriterAndRead();
 						try {
-							ReadFile rf = new ReadFile();
-							od.order((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),rf.priceFood((String)MenuList.getSelectedItem()),Result.getText());
+							ReadFile read = new ReadFile();
+							order.writeOrderFile((String)TablecomboBox.getSelectedItem(),(String)MenuList.getSelectedItem(),read.priceFood((String)MenuList.getSelectedItem()),Result.getText());
 							} catch (IOException e1) {
 								e1.printStackTrace();
 							}
 						try {
-							fuc01.deleteFilebooking02(TablecomboBox.getSelectedIndex()+1);
+							fuc01.deleteOrderBooking(TablecomboBox.getSelectedIndex()+1);
 							table = fuc01.getList(4,"data/booking2.txt");
 							TablecomboBox.setModel(new DefaultComboBoxModel(table));
 						} catch (IOException e1) {
@@ -513,21 +517,11 @@ public class Main   {
 			});
 			Addlist.setBounds(301, 129, 85, 21);
 			Orderpanel.add(Addlist);
+			
+		////////////////////////////Order////////////////////////////////
 
 		
-		
-			//Panel + -
-		
-		
-		
-		//Menu panel***
-
-		
-		
-		
-		
-			//Order
-		//Content here
+		///////////////////////////Panel////////////////////////////////
 		
 		
 		JPanel Menupanel = new JPanel();
@@ -551,12 +545,12 @@ public class Main   {
 				
 			}
 		});
-		Main.setForeground(Color.WHITE);
+		Main.setForeground(Color.BLACK);
 		Main.setBounds(0, 138, 208, 52);
 		Menupanel.add(Main);
 		
-		JButton Checkbill = new JButton("เข็คบิล");
-		Checkbill.setForeground(new Color(255, 255, 255));
+		JButton Checkbill = new JButton("เช็คบิล");
+		Checkbill.setForeground(Color.BLACK);
 		Checkbill.setFont(new Font("RSU", Font.BOLD, 20));
 		Checkbill.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -564,11 +558,6 @@ public class Main   {
 				layeredPane.add(CheckBillpanel);
 				layeredPane.repaint();
 				layeredPane.validate();
-		
-				
-				
-				
-				
 				
 			}
 		});
@@ -577,7 +566,7 @@ public class Main   {
 		Menupanel.add(Checkbill);
 		
 		JButton Table = new JButton("จองโต๊ะ");
-		Table.setForeground(new Color(255, 255, 255));
+		Table.setForeground(Color.BLACK);
 		Table.setFont(new Font("RSU", Font.BOLD, 20));
 		Table.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -594,13 +583,13 @@ public class Main   {
 		Menupanel.add(Table);
 		
 		JButton order = new JButton("ออเดอร์");
-		order.setForeground(new Color(255, 255, 255));
+		order.setForeground(Color.BLACK);
 		order.setFont(new Font("RSU", Font.BOLD, 20));
 		order.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				layeredPane.removeAll();
 				try {
-					table = fuc01.getList(4,"data/booking2.txt");
+					table = fuc01.getList(4,"data/Order.txt");
 					TablecomboBox.setModel(new DefaultComboBoxModel(table));
 				} catch (IOException e1) {
 					e1.printStackTrace();
@@ -617,42 +606,46 @@ public class Main   {
 		
 		JLabel lblNewLabel = new JLabel("Menu");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
-		lblNewLabel.setFont(new Font("RSU", Font.BOLD, 28));
+		lblNewLabel.setFont(new Font("RSU", Font.BOLD | Font.ITALIC, 34));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 32, 208, 32);
 		Menupanel.add(lblNewLabel);
 		
-		JButton btnNewButton_5 = new JButton("รีเฟรช");
+		JButton btnNewButton_5 = new JButton("");
+		ImageIcon refresh = new ImageIcon("src/buffetmanage/refresh.jpg");
+		btnNewButton_5.setIcon(new ImageIcon(refresh.getImage().getScaledInstance(110, 100,Image.SCALE_SMOOTH)));
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
-				Main wd;
+				Main refresh;
 				try {
-					wd = new Main();
-					wd.frame.setVisible(true);
+					refresh = new Main();
+					refresh.frame.setVisible(true);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
 			}
 		});
 		btnNewButton_5.setFont(new Font("RSU", Font.PLAIN, 12));
-		btnNewButton_5.setBounds(60, 430, 85, 21);
+		btnNewButton_5.setBounds(74, 396, 71, 71);
 		Menupanel.add(btnNewButton_5);
 		
 		JButton btnNewButton_6 = new JButton("ปิดร้าน");
+		btnNewButton_6.setForeground(Color.WHITE);
+		btnNewButton_6.setBackground(Color.RED);
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Close c;
+				Close close;
 				try {
-					c = new Close();
-					c.frame.setVisible(true);
+					close = new Close();
+					close.frame.setVisible(true);
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
 		});
-		btnNewButton_6.setFont(new Font("RSU", Font.PLAIN, 18));
+		btnNewButton_6.setFont(new Font("RSU", Font.BOLD, 20));
 		btnNewButton_6.setBounds(46, 511, 121, 40);
 		Menupanel.add(btnNewButton_6);
 		
